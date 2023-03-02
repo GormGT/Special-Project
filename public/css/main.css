@@ -1,4 +1,16 @@
 /* FONTS */
+@font-face {
+    font-family: "RhodiumRegular";
+    src: url("/fonts/RhodiumLibre-Regular.ttf");
+}
+@font-face {
+    font-family: "StardosBold";
+    src: url("/fonts/StardosStencil-Bold.ttf");
+}
+@font-face {
+    font-family: "StardosRegular";
+    src: url("/fonts/StardosStencil-Regular.ttf");
+}
 
 /* VARIABLES */
 :root {
@@ -14,4 +26,8 @@
 /* BODY */
 body {
     background: var(--background_color);
+}
+
+h1{
+    font-family: "StardosBold";
 }
