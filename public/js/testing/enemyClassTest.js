@@ -17,7 +17,7 @@ const createEnemy = function(names, weapons) {
     const eId = enemyId.use();
 
     // generate random health between 100-200
-    const eHealth = Math.floor(Math.random() * 100) + 100;
+    const eHealth = Math.floor(Math.random() * 50) + 50;
 
     // all enemies use the same weapon for now
     const eWeapon = weaponList[0];
@@ -73,9 +73,23 @@ class Player {
 
     // use weapon on target (enemy)
     use(weapon, targetId) {
+        // loop through each enemy, check if id matches of target id
         enemyList.forEach(enemy => {
             if (enemy.id === targetId) {
-                enemy.calcDmg(weapon.damage);
+                // if target found, calculate incoming damage. if calculating returns true, that means the enemy died.
+                if (enemy.calcDmg(weapon.damage) === true) {
+                    // loop through enemies until the affected enemy is found
+                    for (let i = 0; i < enemyList.length; i++) {
+                        // delete enemy from array & html
+                        if (enemyList[i].id === enemy.id) {
+                            enemyList.splice(i, 1);
+
+                            // delete an enemy
+                            const delEnemy = enemyContainer.querySelector(`#id${enemy.id}`);
+                            delEnemy.outerHTML = null;
+                        }
+                    }
+                };
             }
         });
     }
@@ -113,7 +127,7 @@ class Enemy {
 const enemyId = new Id(-1);
 
 // create weapon instances
-weaponList.push(new Weapon('G-18', 16));
+weaponList.push(new Weapon('G-18', 50));
 
 // create player instance
 const player = new Player('Player', 100, weaponList[0]);
@@ -127,10 +141,19 @@ function spawnEnemy() {
     enemyList.push(createEnemy(enemyNames, weaponList));
 
     const htmlTemp = `
-        <button class="enemy" onclick="player.use(player.weapon, ${enemyId.id})">${enemyList[enemyId.id].name}</button>
+        <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})">${enemyList[enemyId.id].name}</button>
     `;
 
     enemyContainer.innerHTML += htmlTemp;
 }
 
+spawnEnemy();
+spawnEnemy();
+spawnEnemy();
+spawnEnemy();
+spawnEnemy();
+spawnEnemy();
+spawnEnemy();
+spawnEnemy();
+spawnEnemy();
 spawnEnemy();
