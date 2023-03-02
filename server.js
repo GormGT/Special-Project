@@ -22,5 +22,8 @@ console.log('Listening for requests on port:', port);
 // routes
 server.get('/', (req, res) => res.render('home'));
 
+// TEMP ROUTES
+server.get('/audio', (req, res) => res.render('audiotest'));
+
 // 404
 server.use((req, res) => res.status(404).render('404'));
