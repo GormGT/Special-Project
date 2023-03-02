@@ -1,5 +1,6 @@
 // imports
 const express = require('express');
+const router = require("./routes/routes");
 
 // variables
 const port = 80;
@@ -20,10 +21,10 @@ server.listen(port);
 console.log('Listening for requests on port:', port);
 
 // routes
-server.get('/', (req, res) => res.render('home'));
+server.use(router);
 
 // TEMP ROUTES
-server.get('/audio', (req, res) => res.render('audiotest'));
+//server.get('/audio', (req, res) => res.render('audiotest'));
 
 // 404
 server.use((req, res) => res.status(404).render('404'));
