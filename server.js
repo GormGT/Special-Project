@@ -17,11 +17,7 @@ server.set('view engine', 'ejs');
 
 // listen
 server.listen(port);
-
 console.log('Listening for requests on port:', port);
 
 // routes
 server.use(router);
-
-// 404
-server.use((req, res) => res.status(404).render('404'));
