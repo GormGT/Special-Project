@@ -11,3 +11,8 @@ module.exports.audiotest_get = (req, res) => {
 }
 
 module.exports.enemyClassTest_get = (req, res) => res.render("enemyClassTest");
+
+// 404
+module.exports.error404 = (req, res) => {
+    res.render("404");
+}

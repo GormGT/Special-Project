@@ -13,4 +13,7 @@ router.get("/audiotest", controller.audiotest_get);
 
 router.get("/classtest", controller.enemyClassTest_get);
 
+// 404
+router.use(controller.error404);
+
 module.exports = router;
