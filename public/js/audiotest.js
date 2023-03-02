@@ -1,5 +1,3 @@
-const playBtn = document.querySelector('.init');
-
 const playAudio = async url => {
     const context = new AudioContext();
     const source = context.createBufferSource();
@@ -12,4 +10,4 @@ const playAudio = async url => {
     source.start();
 }
 
-playBtn.addEventListener('click', () => playAudio('/audio/dsdshtgn.wav'));
+addEventListener('click', () => playAudio('/audio/dsdshtgn.wav'));
