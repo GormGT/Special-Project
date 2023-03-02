@@ -1,0 +1,19 @@
+.enemyContainer {
+    display: grid;
+}
+
+.enemy {
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    width: fit-content;
+
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: 3px solid #000;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
