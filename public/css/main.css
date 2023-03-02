@@ -1,0 +1,17 @@
+/* FONTS */
+
+/* VARIABLES */
+:root {
+    --background_color: #ffffdd;
+}
+
+/* RESET */
+* :not(body) {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* BODY */
+body {
+    background: var(--background_color);
+}
