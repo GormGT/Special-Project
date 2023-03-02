@@ -115,15 +115,12 @@ const enemyId = new Id(-1);
 // create weapon instances
 weaponList.push(new Weapon('G-18', 16));
 
-// create player & enemy instances
+// create player instance
 const player = new Player('Player', 100, weaponList[0]);
-// enemyList.push(new Enemy('Smol boi', 100, weaponList[0]));
-// enemyList.push(new Enemy('Big boi', 200, weaponList[0]));
 
 // log enemies & player
 console.log(player);
 console.log(weaponList);
-// console.log(enemyList);
 
 // spawn enemies
 function spawnEnemy() {
