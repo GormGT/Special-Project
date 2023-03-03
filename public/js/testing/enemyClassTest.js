@@ -7,7 +7,7 @@ let weaponList = [];
 let freeSlots = [1, 2, 3, 4, 5];
 
 // enemy names - each enemy will spawn with one of these random names - can be replaced with images later
-const enemyNames = ['Bob Bobberson', 'Test Guy', 'Cool Guy', 'Bad Guy', 'L', 'The guy on the street'];
+const enemyNames = ['Bob Bobberson', 'Test Guy', 'Cool Guy', 'Bad Guy', 'LLLLLLLLLLLL', 'The guy on the street'];
 
 // randomly create an enemy
 const createEnemy = function(names, weapons) {
@@ -18,7 +18,7 @@ const createEnemy = function(names, weapons) {
     const eId = enemyId.use();
 
     // generate random health between 100-200
-    const eHealth = Math.floor(Math.random() * 50) + 50;
+    const eHealth = Math.ceil(Math.random() * 2);
 
     // all enemies use the same weapon for now
     const eWeapon = weapons[0];
@@ -131,6 +131,7 @@ class Enemy {
     // use an item on a target (the player)
     use(weapon) {
         player.calcDmg(weapon.damage);
+        playAudio('/audio/dsdshtgn.wav');
     }
 }
 
@@ -138,10 +139,10 @@ class Enemy {
 const enemyId = new Id(-1);
 
 // create weapon instances
-weaponList.push(new Weapon('G-18', 75));
+weaponList.push(new Weapon('G-18', 1));
 
 // create player instance
-const player = new Player('Player', 1000, weaponList[0]);
+const player = new Player('Player', 10, weaponList[0]);
 
 // log enemies & player
 console.log(player);
