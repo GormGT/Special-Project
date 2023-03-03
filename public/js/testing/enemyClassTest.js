@@ -141,19 +141,12 @@ function spawnEnemy() {
     enemyList.push(createEnemy(enemyNames, weaponList));
 
     const htmlTemp = `
-        <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})">${enemyList[enemyId.id].name}</button>
+        <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})">${enemyList[enemyList.length - 1].name}</button>
     `;
 
     enemyContainer.innerHTML += htmlTemp;
+
+    return enemyList;
 }
 
-spawnEnemy();
-spawnEnemy();
-spawnEnemy();
-spawnEnemy();
-spawnEnemy();
-spawnEnemy();
-spawnEnemy();
-spawnEnemy();
-spawnEnemy();
-spawnEnemy();
+setInterval(spawnEnemy, 750);
