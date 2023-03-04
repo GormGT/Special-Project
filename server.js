@@ -1,6 +1,7 @@
 // imports
 const express = require('express');
 const router = require("./routes/routes");
+const mongoose = require("mongoose");
 
 // variables
 const port = 80;
@@ -16,9 +17,11 @@ server.use(express.json());
 // view engine
 server.set('view engine', 'ejs');
 
-// listen
-server.listen(port);
-console.log('Listening for requests on port:', port);
+// DB connection
+const dbURI = "mongodb+srv://Shootinggallery:Lká8Ñ§îågWÜ±xéùöéðå°Òç³èò@shooting-gallery-projec.otwz3i6.mongodb.net/";
+mongoose.connect(dbURI, { useNewUrlParser : true, useUnifiedTopology : true })
+ .then((result) => server.listen(port, () => console.log(`Listening to port ${port}`)))
+ .catch((err) => console.log(err))
 
 // routes
 server.use(router);
