@@ -23,5 +23,12 @@ mongoose.connect(dbURI, { useNewUrlParser : true, useUnifiedTopology : true })
  .then((result) => server.listen(port, () => console.log(`Listening to port ${port}`)))
  .catch((err) => console.log(err))
 
+// cookies
+server.get("/setcookie", (req, res) => {
+    res.setHeader("Set-Cookie", "newUser=true");
+    res.send("YOU HAVE COOKIE :)");
+})
+
 // routes
 server.use(router);
+
