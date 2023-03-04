@@ -9,6 +9,7 @@ const port = 80;
 const server = express();
 
 // middleware
+server.use(express.urlencoded({ extended : true }))
 server.use(express.static('public'));
 server.use(express.json());
 
