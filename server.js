@@ -2,6 +2,7 @@
 const express = require('express');
 const router = require("./routes/routes");
 const mongoose = require("mongoose");
+const cookieParser = require('cookie-parser');
 
 // variables
 const port = 80;
@@ -13,6 +14,7 @@ const server = express();
 server.use(express.urlencoded({ extended : true }))
 server.use(express.static('public'));
 server.use(express.json());
+server.use(cookieParser());
 
 // view engine
 server.set('view engine', 'ejs');
@@ -22,12 +24,6 @@ const dbURI = "mongodb+srv://Shootinggallery:Lká8Ñ§îågWÜ±xéùöéðå°�
 mongoose.connect(dbURI, { useNewUrlParser : true, useUnifiedTopology : true })
  .then((result) => server.listen(port, () => console.log(`Listening to port ${port}`)))
  .catch((err) => console.log(err))
-
-// cookies
-server.get("/setcookie", (req, res) => {
-    res.setHeader("Set-Cookie", "newUser=true");
-    res.send("YOU HAVE COOKIE :)");
-})
 
 // routes
 server.use(router);
