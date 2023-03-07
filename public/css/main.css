@@ -31,3 +31,6 @@ body {
 h1{
     font-family: "StardosBold";
 }
+h1 span{
+    padding: 10px;
+}
