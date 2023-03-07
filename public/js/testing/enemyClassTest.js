@@ -9,6 +9,16 @@ let freeSlots = [1, 2, 3, 4, 5];
 // enemy names - each enemy will spawn with one of these random names - can be replaced with images later
 const enemyNames = ['Bob Bobberson', 'Test Guy', 'Cool Guy', 'Bad Guy', 'LLLLLLLLLLLL', 'The guy on the street'];
 
+// delay
+const sleep = function(ms) {
+    const startDate = Date.now();
+    let endDate = Date.now();
+
+    while(endDate - startDate < ms) {
+        endDate = Date.now();
+    }
+}
+
 // randomly create an enemy
 const createEnemy = function(names, weapons) {
     // use a random name from the names array above
@@ -49,9 +59,30 @@ class Id {
 
 // weapon class (used to construct/make weapons stored in an array, that can then be "given" to the player or an enemy)
 class Weapon {
-    constructor(name, damage) {
+    constructor(name, damage, fpc, fpcRate, fireRate) {
         this.name = String(name);
         this.damage = Number(damage);
+        this.firePerClick = Number(fpc);
+        this.fpcRate = Number(fpcRate);
+        this.fireRate = Number(fireRate);
+        this.usable = true;
+    }
+    use(target) {
+        if (this.usable) {
+            this.usable = false; // sets cooldown
+
+            // fire weapon
+            for (let i = 0; i < this.firePerClick; i++) {
+                target.calcDmg(this.damage)
+
+                // delay next shot
+                sleep(this.fpcRate);
+            }
+
+            // finish cooldown
+            sleep(this.fireRate);
+            this.usable = true;
+        }
     }
 }
 
@@ -83,23 +114,7 @@ class Player {
         enemyList.forEach(enemy => {
             if (enemy.id === targetId) {
                 // if target found, calculate incoming damage. if calculating returns true, that means the enemy died.
-                if (enemy.calcDmg(weapon.damage)) {
-                    // loop through enemies until the affected enemy is found
-                    for (let i = 0; i < enemyList.length; i++) {
-                        // enemy found
-                        if (enemyList[i].id === enemy.id) {
-                            // delete enemy from document
-                            const delEnemySlot = document.querySelector(`div.slot${enemy.slot}`);
-                            delEnemySlot.innerHTML = '';
-        
-                            // free the slot used by enemy
-                            freeSlots.push(enemyList[i].slot);
-
-                            // delete enemy from array
-                            enemyList.splice(i, 1);
-                        }
-                    }
-                };
+                weapon.use(enemy);
             }
         });
     }
@@ -120,9 +135,27 @@ class Enemy {
         this.health -= dmg;
 
         if (this.health < 1) {
+            console.log(`enemy ${this.name} died`);
+
+            // loop through enemies until the affected enemy is found
+            for (let i = 0; i < enemyList.length; i++) {
+                // enemy found
+                if (enemyList[i].id === this.id) {
+                    // delete enemy from document
+                    const delEnemySlot = document.querySelector(`div.slot${this.slot}`);
+                    delEnemySlot.innerHTML = '';
+
+                    // free the slot used by enemy
+                    freeSlots.push(enemyList[i].slot);
+
+                    // delete enemy from array
+                    enemyList.splice(i, 1);
+                }
+            }
             // enemy died
             return this.slot;
         } else {
+            console.log(`enemy ${this.name} has ${this.health} health`);
             // enemy survived
             return false;
         }
@@ -139,10 +172,12 @@ class Enemy {
 const enemyId = new Id(-1);
 
 // create weapon instances
-weaponList.push(new Weapon('G-18', 1));
+weaponList.push(new Weapon('G-18', 5, 1, null, 1000));
+weaponList.push(new Weapon('Burst Rifle', 1.3, 4, 125, 1000));
 
 // create player instance
 const player = new Player('Player', 10, weaponList[0]);
++
 
 // log enemies & player
 console.log(player);
@@ -181,4 +216,4 @@ function spawnEnemy() {
     }
 }
 
-setInterval(spawnEnemy, 1000);
+setInterval(spawnEnemy, 1000)
