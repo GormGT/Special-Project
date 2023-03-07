@@ -27,7 +27,7 @@ const createToken = (id) => {
 
 // controllers
 module.exports.home_get = (req, res) => {
-    res.render("home");
+    res.render("home", { title: "Home", bg: "main" });
 }
 
 module.exports.login_get = (req, res) => {
