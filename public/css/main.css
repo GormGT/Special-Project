@@ -24,10 +24,37 @@
 }
 
 /* BODY */
-body {
+body.main{
+    background-image: url("/img/placeholderback1.png");
+}
+h1, h2, h3, h4, h5, h6, p, li{
+    color: #E97912;
+}
+p, li{
+    font-family: "RhodiumRegular";
+}
+main#home{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+}
+
+body.testing {
     background: var(--background_color);
 }
 
 h1{
     font-family: "StardosBold";
+    font-size: 60px;
+    padding: 10px;
+}
+h1 span{
+    padding: 10px;
+    font-size: 20px;
+}
+ul li{
+    font-size: 30px;
 }
