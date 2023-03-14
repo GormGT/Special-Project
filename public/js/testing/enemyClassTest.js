@@ -9,16 +9,6 @@ let freeSlots = [1, 2, 3, 4, 5];
 // enemy names - each enemy will spawn with one of these random names - can be replaced with images later
 const enemyNames = ['Bob Bobberson', 'Test Guy', 'Cool Guy', 'Bad Guy', 'LLLLLLLLLLLL', 'The guy on the street'];
 
-// delay
-const sleep = function(ms) {
-    const startDate = Date.now();
-    let endDate = Date.now();
-
-    while(endDate - startDate < ms) {
-        endDate = Date.now();
-    }
-}
-
 // randomly create an enemy
 const createEnemy = function(names, weapons) {
     // use a random name from the names array above
@@ -28,7 +18,7 @@ const createEnemy = function(names, weapons) {
     const eId = enemyId.use();
 
     // generate random health between 100-200
-    const eHealth = Math.ceil(Math.random() * 2);
+    const eHealth = Math.ceil(Math.random() * 5);
 
     // all enemies use the same weapon for now
     const eWeapon = weapons[0];
@@ -62,26 +52,34 @@ class Weapon {
     constructor(name, damage, fpc, fpcRate, fireRate) {
         this.name = String(name);
         this.damage = Number(damage);
-        this.firePerClick = Number(fpc);
+        this.firePerClick = Number(fpc - 1);
         this.fpcRate = Number(fpcRate);
         this.fireRate = Number(fireRate);
         this.usable = true;
     }
     use(target) {
         if (this.usable) {
+            console.log('used');
             this.usable = false; // sets cooldown
 
-            // fire weapon
-            for (let i = 0; i < this.firePerClick; i++) {
-                target.calcDmg(this.damage)
+            // initial shot
+            target.calcDmg(this.damage);
 
-                // delay next shot
-                sleep(this.fpcRate);
+            // fpc shots
+            if (this.firePerClick) {
+                for (let i = 0; i < this.firePerClick; i++) {
+                    setTimeout(() => {
+                        target.calcDmg(this.damage);
+                    }, this.fpcRate);
+                }
             }
 
             // finish cooldown
-            sleep(this.fireRate);
-            this.usable = true;
+            setTimeout(() => {
+                this.usable = true;
+            }, this.fireRate);
+        } else {
+            console.log('COOLDOWN YOU SILLY GOOOFY GOOBER');
         }
     }
 }
@@ -172,12 +170,11 @@ class Enemy {
 const enemyId = new Id(-1);
 
 // create weapon instances
-weaponList.push(new Weapon('G-18', 5, 1, null, 1000));
-weaponList.push(new Weapon('Burst Rifle', 1.3, 4, 125, 1000));
+weaponList.push(new Weapon('G-18', 5, 1, null, 200));
+weaponList.push(new Weapon('Burst Rifle', 1, 4, 125, 250));
 
 // create player instance
 const player = new Player('Player', 10, weaponList[0]);
-+
 
 // log enemies & player
 console.log(player);
