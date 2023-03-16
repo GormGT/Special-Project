@@ -1,7 +1,49 @@
 <%- include('partials/header') %>
 
+<div class="navButtons">
+    <ul>
+        <li class="backButton"><a href="/"><<< Back</a></li>
+        <li class="accountName"><a href="account">Username</a></li>
+    </ul>
+</div>
 <main id="levSelect">
-    <header>
+    <header class="topHeader">
         <h1>Level Select</h1>
     </header>
-</main>>
+
+    <div id="selectCarousel">
+        <div class="carouselItem">
+            <img src="img/GalleryConcept.png" alt="Background image">
+            <ul>
+                <li><h2>Shooting Range</h2></li>
+                <li>Level type: Regular</li>
+                <li>High-score: 0</li>
+            </ul>
+        </div>
+        <div class="carouselItem">
+            <img src="img/GalleryConcept.png" alt="Background image">
+            <ul>
+                <li><h2>Shooting Range 2</h2></li>
+                <li>Level type: Regular</li>
+                <li>High-score: 3</li>
+            </ul>
+        </div>
+        <div class="carouselItem">
+            <img src="img/GalleryConcept.png" alt="Background image">
+            <ul>
+                <li><h2>Shooting Range 3</h2></li>
+                <li>Level type: Regular</li>
+                <li>High-score: 0</li>
+            </ul>
+        </div>
+
+        <a class="carouselPrev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="carouselNext" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div>
+        
+    </div>
+</main>
+
+<script src="js/menu/levelSelect.js"></script>
