@@ -8,6 +8,12 @@ const router = Router();
 // routes
 router.get("/", controller.home_get);
 
+router.get("/levelSelect", controller.levSelect_get);
+
+router.get("/settings", controller.settings_get);
+
+router.get("/credits", controller.credits_get);
+
 router.get("/login", controller.login_get);
 
 router.post("/login", controller.login_post);
