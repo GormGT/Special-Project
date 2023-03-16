@@ -4,10 +4,10 @@ const enemyContainer = document.querySelector('.enemyContainer');
 // global variables
 let enemyList = [];
 let weaponList = [];
-let freeSlots = [1, 2, 3, 4, 5];
+let freeSlots = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // enemy names - each enemy will spawn with one of these random names - can be replaced with images later
-const enemyNames = ['Bob Bobberson', 'Test Guy', 'Cool Guy', 'Bad Guy', 'LLLLLLLLLLLL', 'The guy on the street'];
+const enemyNames = ['Bob Bobb', 'Test Guy', 'Cool Guy', 'Bad Guy', 'LLLLLLLL', 'The Guy'];
 
 // randomly create an enemy
 const createEnemy = function(names, weapons) {
@@ -140,7 +140,7 @@ class Enemy {
                 // enemy found
                 if (enemyList[i].id === this.id) {
                     // delete enemy from document
-                    const delEnemySlot = document.querySelector(`div.slot${this.slot}`);
+                    const delEnemySlot = document.querySelector(`div#slot${this.slot}`);
                     delEnemySlot.innerHTML = '';
 
                     // free the slot used by enemy
@@ -192,7 +192,9 @@ function spawnEnemy() {
         `;
 
         // put enemy into correct slot
-        const enemySlot = document.querySelector(`div.slot${currEnemy.slot}`);
+        const enemySlot = document.querySelector(`div#slot${currEnemy.slot}`);
+        console.log(enemySlot.outerHTML);
+        console.log(freeSlots);
 
         enemySlot.innerHTML = htmlTemp;
 
@@ -213,4 +215,4 @@ function spawnEnemy() {
     }
 }
 
-setInterval(spawnEnemy, 1000)
+setInterval(spawnEnemy, 1000);
