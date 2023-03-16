@@ -25,20 +25,15 @@ body {
 
 .enemy {
     display: inline-block;
-    background: #fff;
-    color: #000;
-    width: fit-content;
+    width: 100px;
 
     position: absolute;
     left: 50%;
     right: 50%;
     transform: translate(-50%, -50%);
 
-    padding: 10px;
-    font-weight: bold;
-    font-size: 1.5rem;
-    border: 3px solid #000;
-    border-radius: 8px;
+    background: none;
+    border: none;
 
     cursor: pointer;
 }

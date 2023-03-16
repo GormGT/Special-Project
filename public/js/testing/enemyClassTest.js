@@ -111,7 +111,7 @@ class Player {
         // loop through each enemy, check if id matches of target id
         enemyList.forEach(enemy => {
             if (enemy.id === targetId) {
-                // if target found, calculate incoming damage. if calculating returns true, that means the enemy died.
+                // if target found, calculate incoming damage
                 weapon.use(enemy);
             }
         });
@@ -128,7 +128,7 @@ class Enemy {
         this.slot = slot; // used to store which slot the enemy is located in
     }
 
-    // handle incoming damage (returns true/false if the enemy dies)
+    // handle incoming damage
     calcDmg(dmg) {
         this.health -= dmg;
 
@@ -141,7 +141,15 @@ class Enemy {
                 if (enemyList[i].id === this.id) {
                     // delete enemy from document
                     const delEnemySlot = document.querySelector(`div#slot${this.slot}`);
-                    delEnemySlot.innerHTML = '';
+                    const htmlTemp = `
+                        <button class="enemy"><img src="/img/CastleCrashers-img/CastleThief-Dead.png" width="130px"></img></button>
+                    `;
+
+                    delEnemySlot.innerHTML = htmlTemp;
+
+                    setTimeout(() => {
+                        delEnemySlot.innerHTML = '';
+                    }, 1000);
 
                     // free the slot used by enemy
                     freeSlots.push(enemyList[i].slot);
@@ -188,8 +196,7 @@ function spawnEnemy() {
         const currEnemy = enemyList[enemyList.length - 1];
 
         const htmlTemp = `
-            <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})">${currEnemy.name}</button>
-        `;
+            <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})"><img src="/img/CastleCrashers-img/CastleThief.png" width="100px"></img></button>`;
 
         // put enemy into correct slot
         const enemySlot = document.querySelector(`div#slot${currEnemy.slot}`);
