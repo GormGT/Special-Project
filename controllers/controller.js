@@ -40,14 +40,15 @@ module.exports.login_post = async (req, res) => {// login
     
     try {
         // makes user model
-        const user = await User.login(username, email, password);
+        const user = await User.login(username, email, password)
+         .then((result) => console.log(result));
         // makes jwt token
         const token = createToken(user._id);
         // saves token to cookies
         res.cookie("jwt", token, { httpOnly : true, maxAge : maxAge * 1000 });
         res.status(200).json({ user : user._id });
     } catch (err) {
-        res.status(400).json({ errors });
+        res.status(400).json({ err });
     }
 
 }
