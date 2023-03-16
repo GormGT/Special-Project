@@ -1,11 +1,31 @@
-body {
+body.classTest {
     overflow: hidden;
+    background-image: url("/img/CastleCrashers-img/CastleBackground.png") !important;
+    background-size: 100%;
 }
 
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+
+.playerHealthDisplay {
+    padding: 10px;
+    background: var(--background_color);
+    border: 3px solid black;
+    border-radius: 6px;
+
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+    font-size: 26px;
+}
+
+.playerHealthDisplay span {
+    color: red;
 }
 
 .enemyContainer {

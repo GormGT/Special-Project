@@ -84,7 +84,9 @@ module.exports.audiotest_get = (req, res) => {
     res.render("audiotest", { title: "Audiotest", bg: "testing" });
 }
 
-module.exports.enemyClassTest_get = (req, res) => res.render("enemyClassTest", { title: "enemyClassTest", bg: "testing" });
+module.exports.enemyClassTest_get = (req, res) => {
+    res.render("enemyClassTest", { title: "enemyClassTest", bg: "classTest" });
+}
 
 // 404
 module.exports.error404 = (req, res) => {

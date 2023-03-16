@@ -1,5 +1,6 @@
 // dom
 const enemyContainer = document.querySelector('.enemyContainer');
+const playerHealthDisplay = document.querySelector('h2 span');
 
 // global variables
 let enemyList = [];
@@ -96,11 +97,14 @@ class Player {
         this.health -= dmg;
 
         if (this.health < 1) {
-            console.log(`The player ${this.name} died.`);
-            alert('you died, press ok to refresh!');
-            window.location.reload();
+            playerHealthDisplay.innerText = 'Dead :D';
+
+            setTimeout(() => {
+                alert('you died, press ok to refresh!');
+                window.location.reload();
+            }, 10);
         } else {
-            console.log(`The player ${this.name} has ${this.health} health`);
+            playerHealthDisplay.innerText = this.health;
             return false;
         }
     }
@@ -184,8 +188,9 @@ const enemyId = new Id(-1);
 weaponList.push(new Weapon('G-18', 5, 1, null, 200));
 weaponList.push(new Weapon('Burst Rifle', 1, 4, 125, 250));
 
-// create player instance
-const player = new Player('Player', 10, weaponList[0]);
+// create player instance & display health
+const player = new Player('Player', 25, weaponList[0]);
+playerHealthDisplay.innerText = player.health;
 
 // log enemies & player
 console.log(player);
@@ -223,4 +228,4 @@ function spawnEnemy() {
     }
 }
 
-setInterval(spawnEnemy, 2000);
+setInterval(spawnEnemy, 1500);
