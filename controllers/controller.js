@@ -30,6 +30,18 @@ module.exports.home_get = (req, res) => {
     res.render("home", { title: "Home", bg: "main" });
 }
 
+module.exports.levSelect_get = (req, res) => {
+    res.render("levSelect", { title: "Level Select", bg: "main" });
+}
+
+module.exports.settings_get = (req, res) => {
+    res.render("settings", { title: "Settings", bg: "main" });
+}
+
+module.exports.credits_get = (req, res) => {
+    res.render("credits", { title: "Credits", bg: "main" });
+}
+
 module.exports.login_get = (req, res) => {
     res.render("login", { title: "Log in", bg: "main" });
 }
