@@ -59,7 +59,6 @@ class Weapon {
     }
     use(target) {
         if (this.usable) {
-            console.log('used');
             this.usable = false; // sets cooldown
 
             // initial shot
@@ -139,7 +138,13 @@ class Enemy {
             for (let i = 0; i < enemyList.length; i++) {
                 // enemy found
                 if (enemyList[i].id === this.id) {
-                    // delete enemy from document
+                    // get current enemy id
+                    const currSlot = enemyList[i].slot;
+    
+                    // delete enemy from array
+                    enemyList.splice(i, 1);
+
+                    // enemy death animation
                     const delEnemySlot = document.querySelector(`div#slot${this.slot}`);
                     const htmlTemp = `
                         <button class="enemy"><img src="/img/CastleCrashers-img/CastleThief-Dead.png" width="130px"></img></button>
@@ -147,15 +152,13 @@ class Enemy {
 
                     delEnemySlot.innerHTML = htmlTemp;
 
+                    // despawn enemy after 1 second
                     setTimeout(() => {
                         delEnemySlot.innerHTML = '';
+
+                        // free the slot used by enemy
+                        freeSlots.push(currSlot);
                     }, 1000);
-
-                    // free the slot used by enemy
-                    freeSlots.push(enemyList[i].slot);
-
-                    // delete enemy from array
-                    enemyList.splice(i, 1);
                 }
             }
             // enemy died
@@ -200,8 +203,6 @@ function spawnEnemy() {
 
         // put enemy into correct slot
         const enemySlot = document.querySelector(`div#slot${currEnemy.slot}`);
-        console.log(enemySlot.outerHTML);
-        console.log(freeSlots);
 
         enemySlot.innerHTML = htmlTemp;
 
@@ -222,4 +223,4 @@ function spawnEnemy() {
     }
 }
 
-setInterval(spawnEnemy, 1000);
+setInterval(spawnEnemy, 2000);
