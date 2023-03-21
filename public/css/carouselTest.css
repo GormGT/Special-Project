@@ -15,3 +15,15 @@ button {
     text-align: center;
     align-items: center;
 }
+
+.leftImg {
+    position: absolute;
+    right: 50%;
+    z-index: -1;
+}
+
+.rightImg {
+    position: absolute;;
+    left: 50%;
+    z-index: -1;
+}

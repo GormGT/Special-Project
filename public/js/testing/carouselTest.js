@@ -12,13 +12,15 @@ class Carousel {
         this.index = index;
     }
 
-    indexHandler(increment) {
+    indexHandler(index, increment) {
         // change index
         if (increment) {
-            this.index++;
+            index++;
         } else {
-            this.index--;
+            index--;
         }
+
+        return index;
     }
 
     indexCheck(index) {
@@ -33,19 +35,43 @@ class Carousel {
 
     changeIndex(increment) {
         // change index
-        this.indexHandler(increment);
+        this.index = this.indexHandler(this.index, increment);
 
         // make sure index stays within levels
         this.index = this.indexCheck(this.index);
 
-        // add .hidden to all
+        // get previous & next image
+        let prevIndex = this.indexHandler(this.index, false);
+        let nextIndex = this.indexHandler(this.index, true);
+
+        // make sure next & previous index stays within levels
+        prevIndex = this.indexCheck(prevIndex);
+        nextIndex = this.indexCheck(nextIndex);
+
+        console.log(prevIndex, this.index, nextIndex);
+
+        // add .hidden to all & remove .leftImg & .rightImg from all
         levels.forEach(level => {
             level.classList.add('hidden');
+
+            level.classList.remove('leftImg');
+            level.classList.remove('rightImg');
         });
 
         // remove .hidden from current index
         const currentLevel = $(`#level${this.index}`);
         currentLevel.classList.remove('hidden');
+
+        // add .leftImg & .rightImg to previous & next index
+        const leftImage = $(`#level${prevIndex}`);
+        const rightImage = $(`#level${nextIndex}`);
+
+        leftImage.classList.add('leftImg');
+        rightImage.classList.add('rightImg');
+
+        // remove hidden from left & right image
+        leftImage.classList.remove('hidden');
+        rightImage.classList.remove('hidden');
     }
 }
 
