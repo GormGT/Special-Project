@@ -105,6 +105,12 @@ a {
     box-shadow: inset 0px 0 1px 0px #E97912;
   }
 
+#credits h1 {
+    text-align: center;
+    margin-top: 90px;
+}
+
+
 /*Image carousel styles*/
 
 #selectCarousel {
