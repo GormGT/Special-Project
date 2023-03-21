@@ -80,6 +80,12 @@ a {
     text-decoration: none;
 }
 
+#credits h1 {
+    text-align: center;
+    margin-top: 90px;
+}
+
+
 /*Image carousel styles*/
 
 #selectCarousel {
