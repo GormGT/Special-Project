@@ -27,4 +27,3 @@ mongoose.connect(dbURI, { useNewUrlParser : true, useUnifiedTopology : true })
 
 // routes
 server.use(router);
-
