@@ -11,19 +11,44 @@ button {
 }
 
 .carouselContainer {
-    display: flex;
-    text-align: center;
-    align-items: center;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+.level {
+    align-self: center;
+    justify-self: center;
+    display: grid;
+    height: 100%;
+    width: min-content;
+}
+
+.level span {
+    width: max-content;
+    justify-self: center;
+}
+
+.level img {
+    width: 50vw;
 }
 
 .leftImg {
     position: absolute;
-    right: 50%;
+    right: 20%;
     z-index: -1;
 }
 
 .rightImg {
-    position: absolute;;
-    left: 50%;
+    position: absolute; 
+    left: 20%;
     z-index: -1;
+}
+
+.rightImg img, .leftImg img {
+    width: 25vw;
+}
+
+.hidden {
+    display: none;
 }
