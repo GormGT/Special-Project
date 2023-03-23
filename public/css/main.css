@@ -151,3 +151,22 @@ a {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
+
+
+/* SETTINGS */
+
+#settings, header, h1{
+    text-align: center;
+    padding-top: 35px;
+}
+
+.bad_time{
+    position: absolute;
+    margin-left: 500px;
+    margin-top: 600px;
+    opacity: 0;
+}
+
+.bad_time:hover{
+    opacity: 100;
+}
