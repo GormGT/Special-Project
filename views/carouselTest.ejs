@@ -5,10 +5,10 @@
 
     <h1>Carousel Test Page</h1>
 
-    <button class="prev"><- Previous</button>
-    <button class="next">Next -></button>
-
     <div class="carouselContainer">
+        <button class="carouselBtn prev"> <- </button>
+        <button class="carouselBtn next"> -> </button>
+
         <div class="level" id="level1">
             <img class="carouselImage" src="/img/GalleryConcept.png" alt="">
             <span>Level 1</span>
@@ -29,11 +29,43 @@
             <span>Level 4</span>
         </div>
 
-        <div class="level leftImg" id="level5">
+        <div class="level hidden" id="level5">
             <img class="carouselImage" src="/img/GalleryConcept.png" alt="">
             <span>Level 5</span>
         </div>
+
+        <div class="level hidden" id="level6">
+            <img class="carouselImage" src="/img/GalleryConcept.png" alt="">
+            <span>Level 6</span>
+        </div>
+
+        <div class="level hidden" id="level7">
+            <img class="carouselImage" src="/img/GalleryConcept.png" alt="">
+            <span>Level 7</span>
+        </div>
+
+        <div class="level hidden" id="level8">
+            <img class="carouselImage" src="/img/GalleryConcept.png" alt="">
+            <span>Level 8</span>
+        </div>
+
+        <div class="level hidden" id="level9">
+            <img class="carouselImage" src="/img/GalleryConcept.png" alt="">
+            <span>Level 9</span>
+        </div>
+
+        <div class="level leftImg" id="level10">
+            <img class="carouselImage" src="/img/GalleryConcept.png" alt="">
+            <span>Level 10</span>
+        </div>
     </div>
+
+    <!-- IF ADDING NEW LEVELS:
+        First level has classes "level"
+        Second level has classes "level rightImg"
+        Last level has classes "level leftImg"
+        ALL LEVELS in the MIDDLE has classes "level hidden"
+    -->
 
     <!-- scripts -->
     <script src="/js/testing/carouselTest.js"></script>
