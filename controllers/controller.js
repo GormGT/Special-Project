@@ -34,20 +34,22 @@ module.exports.login_get = (req, res) => {
     res.render("login", { title: "Log In", bg: "main"});
 }
 
-// l o g i n   p o s t   r e q u e s t
+//login post request
 module.exports.login_post = async (req, res) => {// login
     const { username, email, password } = req.body;
-    
+    console.log("hola");
     try {
         // makes user model
         const user = await User.login(username, email, password)
          .then((result) => console.log(result));
+        console.log("hola1");
         // makes jwt token
         const token = createToken(user._id);
         // saves token to cookies
         res.cookie("jwt", token, { httpOnly : true, maxAge : maxAge * 1000 });
         res.status(200).json({ user : user._id });
     } catch (err) {
+        console.log("ERROR ERROR!!!")
         res.status(400).json({ err });
     }
 

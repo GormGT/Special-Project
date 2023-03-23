@@ -32,6 +32,7 @@ userSchema.pre("save", async function (next) {
 
 // static method to login user
 userSchema.static.login = async function(username, email, password) {
+    console.log("Login Method");
     const user = await this.findOne({ email });
     if(user) {
         if(user.username === username) {
