@@ -83,6 +83,7 @@ module.exports.signup_post = async (req, res) => {// signup
         // saves token to browser
         res.cookie("jwt", token, { httpOnly : true, maxAge : maxAge * 1000 })
         res.status(201).json({ user : user._id });
+        console.log("success?");
     } catch (err) {
         handleErrors(err);
         res.status(400);
@@ -97,10 +98,6 @@ module.exports.audiotest_get = (req, res) => {
 
 module.exports.enemyClassTest_get = (req, res) => {
     res.render("enemyClassTest", { title: "enemyClassTest", bg: "classTest" });
-}
-
-module.exports.carouselTest_get = (req, res) => {
-    res.render("carouselTest", { title: "Carousel Test", bg: "carouselTest"});
 }
 
 

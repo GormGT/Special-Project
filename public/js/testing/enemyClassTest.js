@@ -5,7 +5,7 @@ const playerHealthDisplay = document.querySelector('h2 span');
 // global variables
 let enemyList = [];
 let weaponList = [];
-let freeSlots = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let freeSlots = [1, 2, 3, 4, 5, 6, 7, 8];
 
 // enemy names - each enemy will spawn with one of these random names - can be replaced with images later
 const enemyNames = ['Bob Bobb', 'Test Guy', 'Cool Guy', 'Bad Guy', 'LLLLLLLL', 'The Guy'];
@@ -99,10 +99,11 @@ class Player {
         if (this.health < 1) {
             playerHealthDisplay.innerText = 'Dead :D';
 
-            setTimeout(() => {
-                alert('you died, press ok to refresh!');
-                window.location.reload();
-            }, 10);
+            // Commented out for testing purposes
+            // setTimeout(() => { 
+            //     alert('you died, press ok to refresh!');
+            //     window.location.reload();
+            // }, 10);
         } else {
             playerHealthDisplay.innerText = this.health;
             return false;
