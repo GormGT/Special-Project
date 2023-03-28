@@ -52,9 +52,14 @@ button {
     width: min-content;
 }
 
-.level span {
+.levelDetails {
     width: max-content;
     justify-self: center;
+
+    background: White;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
 }
 
 .level img {
