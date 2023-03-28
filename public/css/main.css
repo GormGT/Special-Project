@@ -140,9 +140,9 @@ a.menuLink {
 .carouselPrev, .carouselNext {
     cursor: pointer;
     position: absolute;
-    top: 30%;
+    align-self: center;
     width: auto;
-    margin-top: -22px;
+    margin-top: -40px;
     padding: 16px;
     color: white;
     font-weight: bold;
@@ -151,10 +151,11 @@ a.menuLink {
     border-radius: 0 3px 3px 0;
     user-select: none;
     transition-duration: 0.1s;
+    background-color: rgba(0, 0, 0, 0.501);
 }
 .carouselPrev:hover, .carouselNext:hover{
     transition-duration: 0.1s;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.925);
 }
 .carouselNext {
     right: 0;

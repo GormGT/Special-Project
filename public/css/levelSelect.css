@@ -11,31 +11,33 @@ button {
 }
 
 .carouselBtn {
-    position: absolute;
 
-    padding: 10px;
-    width: 7ch;
-    background: #ffe;
-    border-radius: 8px;
+    padding: 20px;
+    width: 1ch;
+    border-radius: 4px;
     cursor: pointer;
-    border: 2px solid black;
+    border: 2px solid #E97912;
 
-    transition: scale 250ms ease-in-out;
+    transition-duration: 0.1s;
 }
 
 .carouselBtn:hover,
 .carouselBtn:focus {
-    scale: 1.2;
-    transition: scale 250ms ease-in-out;
-    outline: none;
+    transform-origin: center;
+    transition-duration: 0.1s;
+    border-style: hidden;
+}
+.carouselBtn:active{
+    transform-origin: center;
+    transform: scale(0.8);
 }
 
 .carouselBtn.prev {
-    left: 17%;
+    left: 25%;
 }
 
 .carouselBtn.next {
-    right: 17%;
+    right: 25%;
 }
 
 .carouselContainer {
@@ -56,7 +58,7 @@ button {
     width: max-content;
     justify-self: center;
 
-    background: White;
+    font-family: "RhodiumRegular";
     padding: 10px;
     margin-top: 10px;
     border-radius: 4px;
