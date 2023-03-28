@@ -43,7 +43,7 @@ module.exports.credits_get = (req, res) => {
 }
 
 module.exports.login_get = (req, res) => {
-    res.render("login", { title: "Log in", bg: "main" });
+    res.render("login", { title: "Log in", bg: "test" });
 }
 
 //login post request
@@ -68,7 +68,7 @@ module.exports.login_post = async (req, res) => {// login
 }
 
 module.exports.signup_get = (req, res) => {
-    res.render("signup", { title: "Create account", bg: "main" });
+    res.render("signup", { title: "Create account", bg: "test" });
 }
 
 // signup post request
@@ -83,6 +83,7 @@ module.exports.signup_post = async (req, res) => {// signup
         // saves token to browser
         res.cookie("jwt", token, { httpOnly : true, maxAge : maxAge * 1000 })
         res.status(201).json({ user : user._id });
+        console.log("success?");
     } catch (err) {
         handleErrors(err);
         res.status(400);
