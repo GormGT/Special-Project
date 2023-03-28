@@ -162,6 +162,9 @@ a.menuLink {
     border-radius: 3px 0 0 3px;
 }
 
+.hidden {
+    display: none;
+}
 
 /* SETTINGS */
 
