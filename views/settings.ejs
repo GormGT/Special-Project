@@ -1,4 +1,5 @@
 <%- include('partials/header') %>
+<link rel="stylesheet" href="/css/settings.css">
 
 <div class="navButtons">
     <ul>
@@ -6,25 +7,47 @@
         <li class="accountName"><a href="account">Username</a></li>
     </ul>
 </div>
+
+<!-- settings buttons -->
 <main id="settings">
     <header>
         <h1>Settings</h1>
     </header>
+
+    <!-- settings popups -->
+    <div class="settingsPopups">
+        <div class="videoSettingsPopup hidden"></div>
+
+        <div class="audioSettingsPopup hidden">
+            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="10" value="5">
+            <label for="musicSlider">Music: <span class="musicSliderValue"></span></label>
+        </div>
+
+        <div class="colorBlindSettingsPopup hidden"></div>
+
+        <div class="devModeSettingsPopup hidden"></div>
+
+        <div class="arcadeModeSettingsPopup hidden"></div>
+    </div>
+
     <!-- VIDEO -->
-    <a class="video" href=""><h2>Video</h2></a>
+    <button class="videoToggleButton"><h2>Video</h2></button>
     
     <!-- AUDIO -->
-    <a class="audio" href=""><h2>Audio</h2></a>
+    <button class="audioToggleButton"><h2>Audio</h2></button>
     
     <!-- COLOR BLIND (BLACK AND WHITE) -->
-    <a class="colorBlind" href=""><h2>Color Blind Mode</h2></a>
+    <button class="colorblindToggleButton"><h2>Color Blind Mode</h2></button>
     
     <!-- DEV MODE -->
-    <a class="devMode" href=""><h2>Dev Mode</h2></a>
+    <button class="devModeToggleButton"><h2>Dev Mode</h2></button>
     
     <!-- ARCADE MODE -->
-    <a class="arcadeMode" href=""><h2>Arcade Mode</h2></a>
+    <button class="arcadeModeToggleButton"><h2>Arcade Mode</h2></button>
     
     <!-- BAD TIME -->
     <a class="bad_time" href="https://jcw87.github.io/c2-sans-fight/"><img src="/img/bad_time.png" width="30px"></a>
 </main>
+
+<!-- scripts -->
+<script src="/js/menu/settings.js" defer></script>
