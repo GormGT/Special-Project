@@ -5,11 +5,11 @@
     <input type="text" name="username" id="username">
     <div class="nameError"></div>
     <br>
-    <label for="email">Email</label>
+    <label for="email">Email:</label>
     <input type="email" name="email" id="email">
     <div class="emailError"></div>
     <br>
-    <label for="password">Password</label>
+    <label for="password">Password:</label>
     <input type="password" name="password" id="password">
     <div class="passError"></div>
     <br>
@@ -25,19 +25,15 @@
     const passError = document.querySelector(".passError");
 
     form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
         // gets form data
         const username = form.username.value;
         const email = form.email.value;
         const password = form.password.value;
 
-        // gets error containers
-
         // post request
         try {
-            nameError.textContent = "";
-            emailError.textContent = "";
-            passError.textContent = "";
             const res = await fetch("/signup", {
                 method : "POST",
                 body : JSON.stringify({ username, email, password }),
