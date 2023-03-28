@@ -85,7 +85,7 @@ module.exports.signup_post = async (req, res) => {// signup
         res.status(201).json({ user : user._id });
         console.log("success?");
     } catch (err) {
-        handleErrors(err);
+        const errors = handleErrors(err);
         res.status(400);
     }
 }
