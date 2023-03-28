@@ -11,6 +11,8 @@ body.classTest {
 }
 
 .playerHealthDisplay {
+    display: none;
+
     padding: 10px;
     background: var(--background_color);
     border: 3px solid black;
@@ -30,6 +32,48 @@ body.classTest {
 
 .enemyContainer {
     text-align: center;
+    display: grid;
+    grid-template-columns: 9vw 20.2vw 20.4vw 20.4vw 20.2vw 9vw;
+    grid-template-rows: 10.6vh 1.4fr 1.4fr 10.6vh;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "pointCounter . . . . exitButton"
+        ". slot1 slot2 slot3 slot4 ."
+        ". slot5 slot6 slot7 slot8 ."
+        ". . . . . .";
+}
+
+.slot1{
+    grid-area: slot1;
+}
+.slot2{
+    grid-area: slot2;
+}
+.slot3{
+    grid-area: slot3;
+}
+.slot4{
+    grid-area: slot4;
+}
+.slot5{
+    grid-area: slot5;
+}
+.slot6{
+    grid-area: slot6;
+}
+.slot7{
+    grid-area: slot7;
+}
+.slot8{
+    grid-area: slot8;
+}
+.pointCounter{
+    grid-area: pointCounter;
+}
+.exitButton{
+    grid-area: exitButton;
 }
 
 .slot {

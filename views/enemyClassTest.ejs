@@ -2,28 +2,34 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/enemyClassTest.css">
 
-    <h1>Enemy Class Test</h1>
+    <!-- <h1>Enemy Class Test</h1> -->
 
     <div class="playerHealthDisplay">
         <h2>Health: <span>loading healt..</span></h2>
     </div>
 
+    <!-- TODO: Turn this into a grid system so that there's space on the side of the screen, and make the divs into their own grids for hitbox system -->
     <!-- enemies "spawn" inside this div -->
-    <br><br><br><br>
+    <!-- <br><br><br><br> -->
     <div class="enemyContainer">
+        <div class="pointCounter">
+            <h3>Points: 100</h3>
+        </div>
+        <div class="exitButton">
+            <h3>Exit</h3>
+        </div>
+
         <!-- row 1 -->
-        <div class="slot" id="slot1"></div>
-        <div class="slot" id="slot2"></div>
-        <div class="slot" id="slot3"></div>
-        <div class="slot" id="slot4"></div>
-        <div class="slot" id="slot5"></div><br>
+        <div class="slot slot1" id="slot1"></div>
+        <div class="slot slot2" id="slot2"></div>
+        <div class="slot slot3" id="slot3"></div>
+        <div class="slot slot4" id="slot4"></div><br>
 
         <!-- row 2 -->
-        <div class="slot" id="slot6"></div>
-        <div class="slot" id="slot7"></div>
-        <div class="slot" id="slot8"></div>
-        <div class="slot" id="slot9"></div>
-        <div class="slot" id="slot10"></div><br>
+        <div class="slot slot5" id="slot5"></div>
+        <div class="slot slot6" id="slot6"></div>
+        <div class="slot slot7" id="slot7"></div>
+        <div class="slot slot8" id="slot8"></div><br>
     </div>
 
     <!-- scripts -->
