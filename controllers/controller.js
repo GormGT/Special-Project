@@ -100,10 +100,6 @@ module.exports.enemyClassTest_get = (req, res) => {
     res.render("enemyClassTest", { title: "enemyClassTest", bg: "classTest" });
 }
 
-module.exports.carouselTest_get = (req, res) => {
-    res.render("carouselTest", { title: "Carousel Test", bg: "carouselTest"});
-}
-
 
 // 404
 module.exports.error404 = (req, res) => {

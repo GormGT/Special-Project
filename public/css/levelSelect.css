@@ -10,6 +10,34 @@ button {
     width: 50%;
 }
 
+.carouselBtn {
+    position: absolute;
+
+    padding: 10px;
+    width: 7ch;
+    background: #ffe;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid black;
+
+    transition: scale 250ms ease-in-out;
+}
+
+.carouselBtn:hover,
+.carouselBtn:focus {
+    scale: 1.2;
+    transition: scale 250ms ease-in-out;
+    outline: none;
+}
+
+.carouselBtn.prev {
+    left: 17%;
+}
+
+.carouselBtn.next {
+    right: 17%;
+}
+
 .carouselContainer {
     display: grid;
     justify-content: center;
@@ -24,9 +52,14 @@ button {
     width: min-content;
 }
 
-.level span {
+.levelDetails {
     width: max-content;
     justify-self: center;
+
+    background: White;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
 }
 
 .level img {
