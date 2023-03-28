@@ -169,6 +169,12 @@ a.menuLink {
     padding-top: 35px;
 }
 
+#settings, h2, a{
+    margin: 25px 0px;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
 .bad_time{
     position: absolute;
     margin-left: 500px;
