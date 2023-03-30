@@ -18,11 +18,13 @@ const developerModeSettingsButton = document.querySelector('.devModeToggleButton
 const audioSliderMusic = audioSettingsPopup.querySelector('.audioSliderMusic');
 const audioSliderWeapon = audioSettingsPopup.querySelector('.audioSliderWeapon');
 const audioSliderEffects = audioSettingsPopup.querySelector('.audioSliderEffects');
+const videoSliderBrightness = videoSettingsPopup.querySelector('.videoSliderBrightness');
 
 // display value elements (values are displayed here)
 const musicSliderDisplayValue = document.querySelector('.musicSliderDisplayValue');
 const weaponSliderDisplayValue = document.querySelector('.weaponSliderDisplayValue');
 const effectSliderDisplayValue = document.querySelector('.effectSliderDisplayValue');
+const brightnessSliderDisplayValue = document.querySelector('.brightnessSliderDisplayValue');
 
 // toggle popups
 const toggleVideoSettingsPopup = function(open) {
@@ -110,32 +112,25 @@ const saveSettingsToLocalStorage = function(settingsType) {
     }
 
     localStorage.settings = JSON.stringify(newSettings);
+};
+
+const addSliderEventListener = function(sliderElement, displayValueElement, category) {
+    sliderElement.addEventListener('input', () => {
+        // update display value
+        displayValueElement.innerHTML = sliderElement.value;
+
+        // save to localstorage
+        saveSettingsToLocalStorage(category);
+    });
 }
 
+// video settings TODO: brightness slider
+// addSliderEventListener(videoSliderBrightness, brightnessSliderDisplayValue, 'video brightness');
+
 // input handlers - audio settings
-audioSliderMusic.addEventListener('input', () => {
-    // update display value
-    musicSliderDisplayValue.innerHTML = audioSliderMusic.value;
-
-    // save to localstorage
-    saveSettingsToLocalStorage('audio music');
-});
-
-audioSliderWeapon.addEventListener('input', () => {
-    // update display value
-    weaponSliderDisplayValue.innerHTML = audioSliderWeapon.value;
-
-    // save to localstorage
-    saveSettingsToLocalStorage('audio weapon');
-});
-
-audioSliderEffects.addEventListener('input', () => {
-    // update display value
-    effectSliderDisplayValue.innerHTML = audioSliderEffects.value;
-
-    // save to localstorage
-    saveSettingsToLocalStorage('audio effects');
-});
+addSliderEventListener(audioSliderMusic, musicSliderDisplayValue, 'audio music');
+addSliderEventListener(audioSliderWeapon, weaponSliderDisplayValue, 'audio weapon');
+addSliderEventListener(audioSliderEffects, effectSliderDisplayValue, 'audio effects');
 
 // save & fetch local storage
 if (!localStorage.settings) {
