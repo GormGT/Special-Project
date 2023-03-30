@@ -177,13 +177,14 @@ a.menuLink {
 /* SETTINGS */
 
 #settings, header, h1{
+    font-size: 5rem;
     text-align: center;
     padding-top: 35px;
 }
 
 #settings, h2, a{
     margin: 25px 0px;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-decoration: none;
 }
 
@@ -193,15 +194,15 @@ a.menuLink {
 }
 
 .audioSettingsPopup{
-    position: relative;
-    align-self: center;
+    text-align: left;
+    margin: -85px 55%;
 }
 
 
 .bad_time{
     position: absolute;
-    margin-left: 500px;
-    margin-top: 600px;
+    margin-left: -800px;
+    margin-top: -100px;
     opacity: 0;
 }
 
