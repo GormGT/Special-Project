@@ -1,10 +1,43 @@
-.hidden {
-    display: none;
-}
-
 button {
     padding: 4px;
 }
+.startButton{
+    position: absolute;
+    margin-top: -20px;
+    left: 50%;
+    top: 47%;
+    transform: translate(-50%, -325%);
+    -ms-transform: translate(-50%, -325%);
+}
+
+/* .carouselImageContain {
+    width: 100%;
+    height: 100%;
+    background-image:url("/img/GalleryConcept.png");
+    display: grid;
+    grid-template-columns: 0.7fr 1.6fr 0.7fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . ."
+      "prev startButton next"
+      ". . .";
+} */
+/*   
+  .startButton { grid-area: startButton; }
+  
+  .next { grid-area: next; }
+  
+ .prev { grid-area: prev; } */
+  
+  
+
+/* .selectImageContain{
+    position: relative;
+    width: 100%;
+} */
 
 .carouselImage {
     width: 50%;
@@ -33,12 +66,37 @@ button {
 }
 
 .carouselBtn.prev {
-    left: 25%;
+    left: 32%;
 }
 
 .carouselBtn.next {
-    right: 25%;
+    right: 32%;
 }
+.carouselPrev, .carouselNext {
+    z-index: 2;
+    cursor: pointer;
+    position: absolute;
+    align-self: center;
+    width: auto;
+    margin-top: 450px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    transition-duration: 0.1s;
+    background-color: rgba(0, 0, 0, 0.501);
+}
+.carouselPrev:hover, .carouselNext:hover{
+    transition-duration: 0.1s;
+    background-color: rgba(0, 0, 0, 0.925);
+}
+.carouselNext {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+} 
 
 .carouselContainer {
     display: grid;
@@ -59,19 +117,39 @@ button {
     justify-self: center;
 
     font-family: "RhodiumRegular";
+    font-size: 30px;
     padding: 10px;
     margin-top: 10px;
+    margin-bottom: 0px;
     border-radius: 4px;
+    list-style-type: none;
+}
+.levelDetailList{
+    list-style-type: none;
+    text-align: center;
+    justify-self: center;
+}
+.levelDetailList li{
+    font-size: 30px;
 }
 
+
 .level img {
-    width: 50vw;
+    width: 35vw;
+}
+
+.centerImg{
+    height: fit-content;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .leftImg {
     height: fit-content;
     position: absolute;
-    left: 10%;
+    left: 13%;
     z-index: -1;
     top: 50%;
     transform: translateY(-50%);
@@ -80,10 +158,26 @@ button {
 .rightImg {
     height: fit-content;
     position: absolute; 
-    right: 10%;
+    right: 13%;
     z-index: -1;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.leftImg .levelDetails{
+    margin-top: 0px;
+    font-size: 20px;
+}
+.rightImg .levelDetails{
+    margin-top: 0px;
+    font-size: 20px;
+}
+
+.leftImg .levelDetailList{
+    display: none;
+}
+.rightImg .levelDetailList{
+    display: none;
 }
 
 .rightImg img, .leftImg img {

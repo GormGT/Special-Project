@@ -130,7 +130,7 @@ a.menuLink {
 
 /*Image carousel styles*/
 
-#selectCarousel {
+/* #selectCarousel {
     width: 50%;
     position: relative;
     margin: auto;
@@ -145,33 +145,10 @@ a.menuLink {
     list-style-type: none;
     text-align: center;
 }
-.carouselPrev, .carouselNext {
-    cursor: pointer;
-    position: absolute;
-    align-self: center;
-    width: auto;
-    margin-top: -40px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    transition-duration: 0.1s;
-    background-color: rgba(0, 0, 0, 0.501);
-}
-.carouselPrev:hover, .carouselNext:hover{
-    transition-duration: 0.1s;
-    background-color: rgba(0, 0, 0, 0.925);
-}
-.carouselNext {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
+*/
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* SETTINGS */
@@ -201,6 +178,14 @@ a.menuLink {
     border-radius: 20px;
     backdrop-filter: blur(3px);
     color:#E97912;
+    outline: 3px solid #E97912;
+}
+
+.closeButton{
+    position: absolute;
+    color: red;
+    font-size: 1.5rem;
+    margin: -5px 0 0 -75px;
 }
 
 
