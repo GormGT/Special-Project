@@ -2,12 +2,10 @@
 <html>
 <head>
 </head>
-<body>
 
+<body>
     <div id="enemy-health">
         
-
-
     </div>
 
     <% if (health > 0) { %>
@@ -16,14 +14,18 @@
     <p>Enemy dead</p>
     <% } %>
 
-<script type="text/javascript">
-        var enemy = {
-        health: 2
-    };
+    <script type="text/javascript">
+            var enemy1 = {
+            health: 1
+        };
 
-    enemy.health -= 1;
-    var output = ejs.render(template, enemy);
-    document.querySelector('#enemy-health').innerHTML = output;
+        var enemy2 = {
+            health: 2
+        };
+
+        enemy.health -= 1;
+        var output = ejs.render(template, enemy);
+        document.querySelector('#enemy-health').innerHTML = output;
 
     </script>
 </body>
