@@ -18,13 +18,7 @@
     <div class="settingsPopups">
         <div class="videoSettingsPopup hidden"></div>
 
-        <div class="audioSettingsPopup hidden">
-            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="10" value="5">
-            <label for="musicSlider">Music: <span class="musicSliderValue"></span></label><br>
-            
-            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="10" value="5">
-            <label for="musicSlider">Weapons: <span class="weaponSliderValue"></span></label><br>
-        </div>
+        
 
         <div class="colorBlindSettingsPopup hidden"></div>
 
@@ -33,25 +27,35 @@
         <div class="arcadeModeSettingsPopup hidden"></div>
     </div>
 
+        <ul>
     <!-- VIDEO -->
-    <button class="videoToggleButton"><h2>Video</h2></button>
-    
-
+    <li><button class="videoToggleButton"><h2>Video</h2></button></li>
     
     <!-- AUDIO -->
+    <li>
     <button class="audioToggleButton"><h2>Audio</h2></button>
+        <div class="audioSettingsPopup hidden">
+            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="10" value="5">
+            <label for="musicSlider">Music: <span class="musicSliderValue"></span></label><br>
+            
+            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="10" value="5">
+            <label for="musicSlider">Weapons: <span class="weaponSliderValue"></span></label><br>
+        </div>
+    </li>
     
     <!-- COLOR BLIND (BLACK AND WHITE) -->
-    <button class="colorblindToggleButton"><h2>Color Blind Mode</h2></button>
+    <li><button class="colorblindToggleButton"><h2>Color Blind Mode</h2></button></li>
     
     <!-- DEV MODE -->
-    <button class="devModeToggleButton"><h2>Dev Mode</h2></button>
+    <li><button class="devModeToggleButton"><h2>Dev Mode</h2></button></li>
     
     <!-- ARCADE MODE (PIXELATED) -->
-    <button class="arcadeModeToggleButton" href=""><h2>Arcade Mode</h2></button>
+    <li><button class="arcadeModeToggleButton"><h2>Arcade Mode</h2></button></li>
     
     <!-- BAD TIME -->
     <a class="bad_time" href="https://jcw87.github.io/c2-sans-fight/"><img src="/img/bad_time.png" width="30px"></a>
+    
+    </ul>
 </main>
 
 <!-- scripts -->
