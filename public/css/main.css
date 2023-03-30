@@ -30,7 +30,7 @@ body.main{
 h1, h2, h3, h4, h5, h6, p, li, .menuLink, a{
     color: #E97912;
 }
-p, li, .menuLink, a{
+p, li, .menuLink, a, label{
     font-family: "RhodiumRegular";
 }
 
@@ -61,6 +61,14 @@ p, li, .menuLink, a{
 
 main#home{
     margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+}
+
+#account{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -139,24 +147,52 @@ a.menuLink {
 }
 */
 
+.hidden {
+    display: none;
+}
 
 /* SETTINGS */
 
 #settings, header, h1{
+    font-size: 5rem;
     text-align: center;
     padding-top: 35px;
 }
 
 #settings, h2, a{
     margin: 25px 0px;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-decoration: none;
 }
 
+#setings, button{
+    background: transparent;
+    border: none !important;
+}
+
+.audioSettingsPopup{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 0, 0, 0.35) !important;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    color:#E97912;
+    outline: 4px solid #E97912;
+}
+
+.closeButton{
+    position: absolute;
+    color: red;
+    font-size: 1.5rem;
+    margin: -5px 0 0 -75px;
+}
+
+
 .bad_time{
     position: absolute;
-    margin-left: 500px;
-    margin-top: 600px;
+    margin-left: -800px;
+    margin-top: -100px;
     opacity: 0;
 }
 

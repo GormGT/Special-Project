@@ -14,6 +14,8 @@ router.get("/settings", controller.settings_get);
 
 router.get("/credits", controller.credits_get);
 
+router.get("/account", controller.account_get);
+
 router.get("/login", controller.login_get);
 
 router.post("/login", controller.login_post);

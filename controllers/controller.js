@@ -20,6 +20,7 @@ const handleErrors = (err) => {
 // JWT token creation
 const maxAge = 2 * 24 * 60 * 60
 const createToken = (id) => {
+    console.log("jwt in progress")
     return JWT.sign({ id }, "In front of you is a vat of sulfuric acid. In order to escape you must- wait what the fuck are you doing don't dip your balls in there that isn't the challenge holy shit", {
         expiresIn : maxAge
     })
@@ -42,6 +43,10 @@ module.exports.credits_get = (req, res) => {
     res.render("credits", { title: "Credits", bg: "main" });
 }
 
+module.exports.account_get = (req, res) => {
+    res.render("account", { title: "Account", bg: "main" });
+}
+
 module.exports.login_get = (req, res) => {
     res.render("login", { title: "Log in", bg: "test" });
 }
@@ -49,7 +54,7 @@ module.exports.login_get = (req, res) => {
 //login post request
 module.exports.login_post = async (req, res) => {// login
     const { username, email, password } = req.body;
-    console.log("hola");
+    console.log(username, email, password);
     try {
         // makes user model
         const user = await User.login(username, email, password)
@@ -57,6 +62,7 @@ module.exports.login_post = async (req, res) => {// login
         console.log("hola1");
         // makes jwt token
         const token = createToken(user._id);
+        console.log(token);
         // saves token to cookies
         res.cookie("jwt", token, { httpOnly : true, maxAge : maxAge * 1000 });
         res.status(200).json({ user : user._id });
@@ -85,11 +91,15 @@ module.exports.signup_post = async (req, res) => {// signup
         res.status(201).json({ user : user._id });
         console.log("success?");
     } catch (err) {
-        handleErrors(err);
+        const errors = handleErrors(err);
         res.status(400);
     }
 }
 
+module.exports.logout_get = (req, res) => {
+    res.cookie("jwt", "", { maxAge: 1 });
+    res.redirect("/");
+}
 
 // temp
 module.exports.audiotest_get = (req, res) => {

@@ -1,4 +1,5 @@
 <%- include('partials/header') %>
+<link rel="stylesheet" href="/css/settings.css">
 
 <div class="navButtons">
     <ul>
@@ -6,25 +7,60 @@
         <li class="accountName"><a href="account">Username</a></li>
     </ul>
 </div>
+
+<!-- settings buttons -->
 <main id="settings">
     <header>
         <h1>Settings</h1>
     </header>
+
+    <!-- settings popups -->
+    <div class="settingsPopups">
+        <div class="videoSettingsPopup hidden"></div>
+
+        <div class="audioSettingsPopup hidden">
+            <button class="closeButton">X</button>
+            <label for="musicSlider">Music: <span class="musicSliderDisplayValue"></span></label><br>
+            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="200" value="100"><br>
+            
+            
+            <label for="musicSlider">Weapons: <span class="weaponSliderDisplayValue"></span></label><br>
+            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="200" value="100">
+            
+        </div>
+
+        <div class="colorBlindSettingsPopup hidden"></div>
+
+        <div class="devModeSettingsPopup hidden"></div>
+
+        <div class="arcadeModeSettingsPopup hidden"></div>
+    </div>
+
+        <ul>
     <!-- VIDEO -->
-    <a class="video" href=""><h2>Video</h2></a>
+    <li><button class="videoToggleButton"><h2>Video</h2></button></li>
     
     <!-- AUDIO -->
-    <a class="audio" href=""><h2>Audio</h2></a>
+    <li>
+    <button class="audioToggleButton"><h2>Audio</h2></button>
+        
+    </li>
     
     <!-- COLOR BLIND (BLACK AND WHITE) -->
-    <a class="colorBlind" href=""><h2>Color Blind Mode</h2></a>
+    <li><button class="colorblindToggleButton"><h2>Color Blind Mode</h2></button></li>
     
     <!-- DEV MODE -->
-    <a class="devMode" href=""><h2>Dev Mode</h2></a>
+    <li><button class="devModeToggleButton"><h2>Dev Mode</h2></button></li>
     
-    <!-- ARCADE MODE -->
-    <a class="arcadeMode" href=""><h2>Arcade Mode</h2></a>
+    <!-- ARCADE MODE (PIXELATED) -->
+    <li><button class="arcadeModeToggleButton"><h2>Arcade Mode</h2></button></li>
     
+    </ul>
     <!-- BAD TIME -->
     <a class="bad_time" href="https://jcw87.github.io/c2-sans-fight/"><img src="/img/bad_time.png" width="30px"></a>
+    
+    
 </main>
+
+<!-- scripts -->
+<script src="/js/menu/settings.js" defer></script>
