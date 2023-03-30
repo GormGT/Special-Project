@@ -2,14 +2,14 @@
 const videoSettingsPopup = document.querySelector('.videoSettingsPopup');
 const audioSettingsPopup = document.querySelector('.audioSettingsPopup');
 const colorBlindSettingsPopup = document.querySelector('.colorblindSettingsPopup');
-const devModeSettingsPopup = document.querySelector('.devModeSettingsPopup');
+const developerModeSettingsPopup = document.querySelector('.devModeSettingsPopup');
 const arcadeModeSettingsPopup = document.querySelector('.arcadeModeSettingsPopup');
 
 // toggle buttons
 const videoSettingsButton = document.querySelector('.videoToggleButton');
 const audioSettingsButton = document.querySelector('.audioToggleButton');
 const colorBlindSettingsButton = document.querySelector('.colorblindToggleButton');
-const devModeSettingsButton = document.querySelector('.devModeToggleButton');
+const developerModeSettingsButton = document.querySelector('.devModeToggleButton');
 const arcadeModeSettingsButton = document.querySelector('.arcadeModeToggleButton');
 
 // sliders
@@ -34,16 +34,21 @@ const saveSettingsToLocalStorage = function(settingsType) {
 
     // TODO: fill out oldSettings with default settings
     let oldSettings = {
-        audioSettings: {
-            music: 5,
-            weapon: 5
-        },
         videoSettings: {
-            exampleSetting: true,
-            examlpe2Setting: false,
-            example3Setting: 4
+            colorblindMode: false,
+            arcadeMode: false
+        },
+        audioSettings: {
+            music: 100,
+            weapon: 100,
+            soundEffect: 100
+        },
+        developerMode: {
+            showHitboxes: false,
+            showConsoleLogs: false
         }
-    }
+    };
+
     // check for old settings & fetch them
     if (localStorage.settings) {
         // if settings exist in localstorage, override the default settings (oldSettings) with settings from localstorage
@@ -80,26 +85,41 @@ audioSliderWeapon.addEventListener('input', () => {
 });
 
 // save & fetch local storage
-// if (!localStorage.audioSettings) {
-//     // if no settings found, reset settings to default
-//     audioSliderMusic.value = 5;
-//     audioSliderWeapon.value = 5;
-//     musicSliderDisplayValue.innerHTML = 5;
-//     weaponSliderDisplayValue.innerHTML = 5;
-// } else {
-//     // if settings found, fetch & apply them
-//     const audioSettings = JSON.parse(localStorage.audioSettings);
+if (!localStorage.settings) {
+    // if no settings found, reset settings to default
+    const settings = {
+        videoSettings: {
+            colorblindMode: false,
+            arcadeMode: false
+        },
+        audioSettings: {
+            music: 100,
+            weapon: 100,
+            soundEffects: 100
+        },
+        developerMode: {
+            showHitboxes: false,
+            showConsoleLogs: false
+        }
+    };
 
-//     // set slider values
-//     audioSliderMusic.value = audioSettings.musicAudioValue;
-//     audioSliderWeapon.value = audioSettings.weaponAudioValue;
+    // set all slider values
+    audioSliderMusic.value = settings.audioSettings.music;
+    audioSliderWeapon.value = settings.audioSettings.weapon;
 
-//     // set display values
-//     musicSliderDisplayValue.innerHTML = audioSettings.musicAudioValue;
-//     weaponSliderDisplayValue.innerHTML = audioSettings.weaponAudioValue;
-// }
+    // set all display values
+    musicSliderDisplayValue.innerHTML = settings.audioSettings.music;
+    weaponSliderDisplayValue.innerHTML = settings.audioSettings.weapon;
+} else {
+    // if settings found, fetch & apply them
+    const settings = JSON.parse(localStorage.settings);
+    console.log(settings);
 
-// // color blind mode
-// colorBlindSettingsButton.addEventListener('click', () => {
+    // set all slider values
+    audioSliderMusic.value = settings.audioSettings.music;
+    audioSliderWeapon.value = settings.audioSettings.weapon;
 
-// });
+    // set all display values
+    musicSliderDisplayValue.innerHTML = settings.audioSettings.music;
+    weaponSliderDisplayValue.innerHTML = settings.audioSettings.weapon;
+}
