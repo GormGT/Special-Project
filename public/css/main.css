@@ -148,7 +148,7 @@ a.menuLink {
 */
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* SETTINGS */
