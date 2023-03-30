@@ -1,13 +1,14 @@
 // dom
 const enemyContainer = document.querySelector('.enemyContainer');
+const playerHealthDisplay = document.querySelector('h2 span');
 
 // global variables
 let enemyList = [];
 let weaponList = [];
-let freeSlots = [1, 2, 3, 4, 5];
+let freeSlots = [1, 2, 3, 4, 5, 6, 7, 8];
 
 // enemy names - each enemy will spawn with one of these random names - can be replaced with images later
-const enemyNames = ['Bob Bobberson', 'Test Guy', 'Cool Guy', 'Bad Guy', 'LLLLLLLLLLLL', 'The guy on the street'];
+const enemyNames = ['Bob Bobb', 'Test Guy', 'Cool Guy', 'Bad Guy', 'LLLLLLLL', 'The Guy'];
 
 // randomly create an enemy
 const createEnemy = function(names, weapons) {
@@ -18,7 +19,7 @@ const createEnemy = function(names, weapons) {
     const eId = enemyId.use();
 
     // generate random health between 100-200
-    const eHealth = Math.ceil(Math.random() * 2);
+    const eHealth = Math.ceil(Math.random() * 5);
 
     // all enemies use the same weapon for now
     const eWeapon = weapons[0];
@@ -49,9 +50,37 @@ class Id {
 
 // weapon class (used to construct/make weapons stored in an array, that can then be "given" to the player or an enemy)
 class Weapon {
-    constructor(name, damage) {
+    constructor(name, damage, fpc, fpcRate, fireRate) {
         this.name = String(name);
         this.damage = Number(damage);
+        this.firePerClick = Number(fpc - 1);
+        this.fpcRate = Number(fpcRate);
+        this.fireRate = Number(fireRate);
+        this.usable = true;
+    }
+    use(target) {
+        if (this.usable) {
+            this.usable = false; // sets cooldown
+
+            // initial shot
+            target.calcDmg(this.damage);
+
+            // fpc shots
+            if (this.firePerClick) {
+                for (let i = 0; i < this.firePerClick; i++) {
+                    setTimeout(() => {
+                        target.calcDmg(this.damage);
+                    }, this.fpcRate);
+                }
+            }
+
+            // finish cooldown
+            setTimeout(() => {
+                this.usable = true;
+            }, this.fireRate);
+        } else {
+            console.log('COOLDOWN YOU SILLY GOOOFY GOOBER');
+        }
     }
 }
 
@@ -68,11 +97,15 @@ class Player {
         this.health -= dmg;
 
         if (this.health < 1) {
-            console.log(`The player ${this.name} died.`);
-            alert('you died, press ok to refresh!');
-            window.location.reload();
+            playerHealthDisplay.innerText = 'Dead :D';
+
+            // Commented out for testing purposes
+            // setTimeout(() => { 
+            //     alert('you died, press ok to refresh!');
+            //     window.location.reload();
+            // }, 10);
         } else {
-            console.log(`The player ${this.name} has ${this.health} health`);
+            playerHealthDisplay.innerText = this.health;
             return false;
         }
     }
@@ -82,24 +115,8 @@ class Player {
         // loop through each enemy, check if id matches of target id
         enemyList.forEach(enemy => {
             if (enemy.id === targetId) {
-                // if target found, calculate incoming damage. if calculating returns true, that means the enemy died.
-                if (enemy.calcDmg(weapon.damage)) {
-                    // loop through enemies until the affected enemy is found
-                    for (let i = 0; i < enemyList.length; i++) {
-                        // enemy found
-                        if (enemyList[i].id === enemy.id) {
-                            // delete enemy from document
-                            const delEnemySlot = document.querySelector(`div.slot${enemy.slot}`);
-                            delEnemySlot.innerHTML = '';
-        
-                            // free the slot used by enemy
-                            freeSlots.push(enemyList[i].slot);
-
-                            // delete enemy from array
-                            enemyList.splice(i, 1);
-                        }
-                    }
-                };
+                // if target found, calculate incoming damage
+                weapon.use(enemy);
             }
         });
     }
@@ -115,14 +132,44 @@ class Enemy {
         this.slot = slot; // used to store which slot the enemy is located in
     }
 
-    // handle incoming damage (returns true/false if the enemy dies)
+    // handle incoming damage
     calcDmg(dmg) {
         this.health -= dmg;
 
         if (this.health < 1) {
+            console.log(`enemy ${this.name} died`);
+
+            // loop through enemies until the affected enemy is found
+            for (let i = 0; i < enemyList.length; i++) {
+                // enemy found
+                if (enemyList[i].id === this.id) {
+                    // get current enemy id
+                    const currSlot = enemyList[i].slot;
+    
+                    // delete enemy from array
+                    enemyList.splice(i, 1);
+
+                    // enemy death animation
+                    const delEnemySlot = document.querySelector(`div#slot${this.slot}`);
+                    const htmlTemp = `
+                        <button class="enemy"><img src="/img/CastleCrashers-img/CastleThief-Dead.png" width="130px"></img></button>
+                    `;
+
+                    delEnemySlot.innerHTML = htmlTemp;
+
+                    // despawn enemy after 1 second
+                    setTimeout(() => {
+                        delEnemySlot.innerHTML = '';
+
+                        // free the slot used by enemy
+                        freeSlots.push(currSlot);
+                    }, 1000);
+                }
+            }
             // enemy died
             return this.slot;
         } else {
+            console.log(`enemy ${this.name} has ${this.health} health`);
             // enemy survived
             return false;
         }
@@ -139,10 +186,12 @@ class Enemy {
 const enemyId = new Id(-1);
 
 // create weapon instances
-weaponList.push(new Weapon('G-18', 1));
+weaponList.push(new Weapon('G-18', 5, 1, null, 200));
+weaponList.push(new Weapon('Burst Rifle', 1, 4, 125, 250));
 
-// create player instance
-const player = new Player('Player', 10, weaponList[0]);
+// create player instance & display health
+const player = new Player('Player', 25, weaponList[0]);
+playerHealthDisplay.innerText = player.health;
 
 // log enemies & player
 console.log(player);
@@ -156,11 +205,10 @@ function spawnEnemy() {
         const currEnemy = enemyList[enemyList.length - 1];
 
         const htmlTemp = `
-            <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})">${currEnemy.name}</button>
-        `;
+            <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})"><img src="/img/CastleCrashers-img/CastleThief.png" width="100px"></img></button>`;
 
         // put enemy into correct slot
-        const enemySlot = document.querySelector(`div.slot${currEnemy.slot}`);
+        const enemySlot = document.querySelector(`div#slot${currEnemy.slot}`);
 
         enemySlot.innerHTML = htmlTemp;
 
@@ -181,4 +229,4 @@ function spawnEnemy() {
     }
 }
 
-setInterval(spawnEnemy, 1000);
+setInterval(spawnEnemy, 1500);

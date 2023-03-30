@@ -1,0 +1,69 @@
+<%- include('partials/header') %>
+<link rel="stylesheet" href="/css/settings.css">
+
+<div class="navButtons">
+    <ul>
+        <li class="backButton"><a onclick="history.back()"><<< Back</a></li>
+        <li class="accountName"><a href="account">Username</a></li>
+    </ul>
+</div>
+
+<!-- settings buttons -->
+<main id="settings">
+    <header>
+        <h1>Settings</h1>
+    </header>
+
+    <!-- settings popups -->
+    <div class="settingsPopups">
+        <div class="videoSettingsPopup hidden"></div>
+
+        <div class="audioSettingsPopup hidden">
+            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="10" value="5">
+            <label for="musicSlider">Music: <span class="musicSliderDisplayValue"></span></label><br>
+            
+            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="10" value="5">
+            <label for="musicSlider">Weapons: <span class="weaponSliderDisplayValue"></span></label><br>
+        </div>
+
+        <div class="colorBlindSettingsPopup hidden"></div>
+
+        <div class="devModeSettingsPopup hidden"></div>
+
+        <div class="arcadeModeSettingsPopup hidden"></div>
+    </div>
+
+        <ul>
+    <!-- VIDEO -->
+    <li><button class="videoToggleButton"><h2>Video</h2></button></li>
+    
+    <!-- AUDIO -->
+    <li>
+    <button class="audioToggleButton"><h2>Audio</h2></button>
+        <div class="audioSettingsPopup hidden">
+            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="10" value="5">
+            <label for="musicSlider">Music: <span class="musicSliderValue"></span></label><br>
+            
+            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="10" value="5">
+            <label for="musicSlider">Weapons: <span class="weaponSliderValue"></span></label><br>
+        </div>
+    </li>
+    
+    <!-- COLOR BLIND (BLACK AND WHITE) -->
+    <li><button class="colorblindToggleButton"><h2>Color Blind Mode</h2></button></li>
+    
+    <!-- DEV MODE -->
+    <li><button class="devModeToggleButton"><h2>Dev Mode</h2></button></li>
+    
+    <!-- ARCADE MODE (PIXELATED) -->
+    <li><button class="arcadeModeToggleButton"><h2>Arcade Mode</h2></button></li>
+    
+    </ul>
+    <!-- BAD TIME -->
+    <a class="bad_time" href="https://jcw87.github.io/c2-sans-fight/"><img src="/img/bad_time.png" width="30px"></a>
+    
+    
+</main>
+
+<!-- scripts -->
+<script src="/js/menu/settings.js" defer></script>
