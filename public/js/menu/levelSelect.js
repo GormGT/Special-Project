@@ -58,11 +58,25 @@ class Carousel {
 
         // remove .hidden from current index
         const currentLevel = $(`#level${this.index}`);
-        currentLevel.classList.remove('hidden');
+        const currentButton = $(`#level${this.index} .carouselImageContain .startButton`);
 
-        // add .leftImg & .rightImg to previous & next index
+        currentLevel.classList.remove('hidden');
+        currentButton.classList.remove('hidden');
+        
+        currentLevel.classList.add('centerImg');
+
+        // add .leftImg & .rightImg to previous & next index, and hide their startbuttons
         const leftImage = $(`#level${prevIndex}`);
         const rightImage = $(`#level${nextIndex}`);
+
+        const leftButton = $(`#level${prevIndex} .carouselImageContain .startButton`);
+        const rightButton = $(`#level${nextIndex} .carouselImageContain .startButton`);
+
+        leftImage.classList.remove('centerImg');
+        rightImage.classList.remove('centerImg');
+
+        leftButton.classList.add('hidden');
+        rightButton.classList.add('hidden');
 
         leftImage.classList.add('leftImg');
         rightImage.classList.add('rightImg');
