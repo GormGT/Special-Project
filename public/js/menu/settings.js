@@ -1,29 +1,65 @@
 // popups
 const videoSettingsPopup = document.querySelector('.videoSettingsPopup');
 const audioSettingsPopup = document.querySelector('.audioSettingsPopup');
-const colorBlindSettingsPopup = document.querySelector('.colorblindSettingsPopup');
 const developerModeSettingsPopup = document.querySelector('.devModeSettingsPopup');
-const arcadeModeSettingsPopup = document.querySelector('.arcadeModeSettingsPopup');
+
+// popup close buttons
+const videoSettingsClosePopupButton = videoSettingsPopup.querySelector('.closeButton');
+const audioSettingsClosePopupButton = audioSettingsPopup.querySelector('.closeButton');
+const developerModeClosePopupButton = developerModeSettingsPopup.querySelector('.closeButton');
 
 // toggle buttons
+const openPopupButtons = document.querySelector('.openPopupButtons');
 const videoSettingsButton = document.querySelector('.videoToggleButton');
 const audioSettingsButton = document.querySelector('.audioToggleButton');
-const colorBlindSettingsButton = document.querySelector('.colorblindToggleButton');
 const developerModeSettingsButton = document.querySelector('.devModeToggleButton');
-const arcadeModeSettingsButton = document.querySelector('.arcadeModeToggleButton');
 
 // sliders
 const audioSliderMusic = audioSettingsPopup.querySelector('.audioSliderMusic');
 const audioSliderWeapon = audioSettingsPopup.querySelector('.audioSliderWeapon');
+const audioSliderEffects = audioSettingsPopup.querySelector('.audioSliderEffects');
 
 // display value elements (values are displayed here)
 const musicSliderDisplayValue = document.querySelector('.musicSliderDisplayValue');
 const weaponSliderDisplayValue = document.querySelector('.weaponSliderDisplayValue');
+const effectSliderDisplayValue = document.querySelector('.effectSliderDisplayValue');
 
 // toggle popups
-audioSettingsButton.addEventListener('click', () => {
-    audioSettingsPopup.classList.toggle('hidden');
-});
+const toggleVideoSettingsPopup = function(open) {
+    if (open) {
+        // open the popup
+        videoSettingsPopup.classList.remove('hidden');
+        openPopupButtons.classList.add('hidden');
+    } else {
+        // close the popup
+        videoSettingsPopup.classList.add('hidden');
+        openPopupButtons.classList.remove('hidden');
+    };
+};
+
+const toggleAudioSettingsPopup = function(open) {
+    if (open) {
+        // open the popup
+        audioSettingsPopup.classList.remove('hidden');
+        openPopupButtons.classList.add('hidden');
+    } else {
+        // close the popup
+        audioSettingsPopup.classList.add('hidden');
+        openPopupButtons.classList.remove('hidden');
+    };
+};
+
+const toggleDeveloperModeSettingsPopup = function(open) {
+    if (open) {
+        // open the popup
+        developerModeSettingsPopup.classList.remove('hidden');
+        openPopupButtons.classList.add('hidden');
+    } else {
+        // close the popup
+        developerModeSettingsPopup.classList.add('hidden');
+        openPopupButtons.classList.remove('hidden');
+    };
+};
 
 // save settings function - "settingsType" parameter = which settings are being stored
 const saveSettingsToLocalStorage = function(settingsType) {
@@ -36,12 +72,13 @@ const saveSettingsToLocalStorage = function(settingsType) {
     let oldSettings = {
         videoSettings: {
             colorblindMode: false,
-            arcadeMode: false
+            arcadeMode: false,
+            brightness: 100
         },
         audioSettings: {
             music: 100,
             weapon: 100,
-            soundEffect: 100
+            soundEffects: 100
         },
         developerMode: {
             showHitboxes: false,
@@ -59,13 +96,17 @@ const saveSettingsToLocalStorage = function(settingsType) {
     let newSettings = oldSettings;
 
     // main category check - audio, video, etc
-    if (mainCategory === 'audio') {
-        // subcategory check - audio weapon, audio music, etc
+    if (mainCategory === 'video') {
+        // subcategory check - brightness, colorblind, arcade mode
+    } else if (mainCategory === 'audio') {
+        // subcategory check - audio weapon, audio music, audio effects
         if (subcategory === 'music') {
             newSettings.audioSettings.music = audioSliderMusic.value;
         } else if (subcategory === 'weapon') {
             newSettings.audioSettings.weapon = audioSliderWeapon.value;
-        }
+        } else if (subcategory === 'effects') {
+            newSettings.audioSettings.soundEffects = audioSliderEffects.value;
+        };
     }
 
     localStorage.settings = JSON.stringify(newSettings);
@@ -73,15 +114,27 @@ const saveSettingsToLocalStorage = function(settingsType) {
 
 // input handlers - audio settings
 audioSliderMusic.addEventListener('input', () => {
+    // update display value
     musicSliderDisplayValue.innerHTML = audioSliderMusic.value;
 
+    // save to localstorage
     saveSettingsToLocalStorage('audio music');
 });
 
 audioSliderWeapon.addEventListener('input', () => {
+    // update display value
     weaponSliderDisplayValue.innerHTML = audioSliderWeapon.value;
 
+    // save to localstorage
     saveSettingsToLocalStorage('audio weapon');
+});
+
+audioSliderEffects.addEventListener('input', () => {
+    // update display value
+    effectSliderDisplayValue.innerHTML = audioSliderEffects.value;
+
+    // save to localstorage
+    saveSettingsToLocalStorage('audio effects');
 });
 
 // save & fetch local storage
@@ -90,7 +143,8 @@ if (!localStorage.settings) {
     const settings = {
         videoSettings: {
             colorblindMode: false,
-            arcadeMode: false
+            arcadeMode: false,
+            brightness: 100
         },
         audioSettings: {
             music: 100,
@@ -106,20 +160,23 @@ if (!localStorage.settings) {
     // set all slider values
     audioSliderMusic.value = settings.audioSettings.music;
     audioSliderWeapon.value = settings.audioSettings.weapon;
+    audioSliderEffects.value = settings.audioSettings.soundEffects;
 
     // set all display values
     musicSliderDisplayValue.innerHTML = settings.audioSettings.music;
     weaponSliderDisplayValue.innerHTML = settings.audioSettings.weapon;
+    effectSliderDisplayValue.innerHTML = settings.audioSettings.soundEffects;
 } else {
     // if settings found, fetch & apply them
     const settings = JSON.parse(localStorage.settings);
-    console.log(settings);
 
     // set all slider values
     audioSliderMusic.value = settings.audioSettings.music;
     audioSliderWeapon.value = settings.audioSettings.weapon;
+    audioSliderEffects.value = settings.audioSettings.soundEffects;
 
     // set all display values
     musicSliderDisplayValue.innerHTML = settings.audioSettings.music;
     weaponSliderDisplayValue.innerHTML = settings.audioSettings.weapon;
-}
+    effectSliderDisplayValue.innerHTML = settings.audioSettings.soundEffects;
+};

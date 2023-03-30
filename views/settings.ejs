@@ -16,45 +16,50 @@
 
     <!-- settings popups -->
     <div class="settingsPopups">
-        <div class="videoSettingsPopup hidden"></div>
+        <div class="videoSettingsPopup hidden">
+            <button class="closeButton" onclick="toggleVideoSettingsPopup(false);">X</button>
+
+            <label for="colorblindMode">Color blind mode:</label>
+            <input class="videoCheckColorblindMode" type="checkbox" name="colorblindMode">
+
+            <label for="arcadeMode">Arcade mode:</label>
+            <input class="videoCheckArcadeMode" type="checkbox" name="arcadeMode">
+        </div>
 
         <div class="audioSettingsPopup hidden">
-            <button class="closeButton">X</button>
-            <label for="musicSlider">Music: <span class="musicSliderDisplayValue"></span></label><br>
+            <button class="closeButton" onclick="toggleAudioSettingsPopup(false);">X</button>
+
+            <label for="musicSlider">Music: <span class="musicSliderDisplayValue"></span>%</label><br>
             <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="200" value="100"><br>
             
             
-            <label for="musicSlider">Weapons: <span class="weaponSliderDisplayValue"></span></label><br>
-            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="200" value="100">
-            
+            <label for="weaponSlider">Weapons: <span class="weaponSliderDisplayValue"></span>%</label><br>
+            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="200">
+
+            <label for="effectSlider">Sound Effects: <span class="effectSliderDisplayValue"></span>%</label>
+            <input class="audioSliderEffects" type="range" name="effectSlider" min="0" max="200">
         </div>
 
-        <div class="colorBlindSettingsPopup hidden"></div>
+        <div class="devModeSettingsPopup hidden">
+            <button class="closeButton" onclick="toggleDeveloperModeSettingsPopup(false);">X</button>
 
-        <div class="devModeSettingsPopup hidden"></div>
+            <label for="showHitboxes">Show hitboxes:</label>
+            <input class="developerCheckHitboxes" type="checkbox" name="showHitboxes">
 
-        <div class="arcadeModeSettingsPopup hidden"></div>
+            <label for="enableConsole">Enable console:</label>
+            <input class="developerCheckConsole" type="checkbox" name="enableConsole">
+        </div>
     </div>
 
-        <ul>
-    <!-- VIDEO -->
-    <li><button class="videoToggleButton"><h2>Video</h2></button></li>
-    
-    <!-- AUDIO -->
-    <li>
-    <button class="audioToggleButton"><h2>Audio</h2></button>
+    <ul class="openPopupButtons">
+        <!-- VIDEO -->
+        <li><button class="videoToggleButton" onclick="toggleVideoSettingsPopup(true);"><h2>Video</h2></button></li>
         
-    </li>
-    
-    <!-- COLOR BLIND (BLACK AND WHITE) -->
-    <li><button class="colorblindToggleButton"><h2>Color Blind Mode</h2></button></li>
-    
-    <!-- DEV MODE -->
-    <li><button class="devModeToggleButton"><h2>Dev Mode</h2></button></li>
-    
-    <!-- ARCADE MODE (PIXELATED) -->
-    <li><button class="arcadeModeToggleButton"><h2>Arcade Mode</h2></button></li>
-    
+        <!-- AUDIO -->
+        <li><button class="audioToggleButton" onclick="toggleAudioSettingsPopup(true);"><h2>Audio</h2></button></li>
+        
+        <!-- DEV MODE -->
+        <li><button class="devModeToggleButton" onclick="toggleDeveloperModeSettingsPopup(true);"><h2>Dev Mode</h2></button></li>
     </ul>
     <!-- BAD TIME -->
     <a class="bad_time" href="https://jcw87.github.io/c2-sans-fight/"><img src="/img/bad_time.png" width="30px"></a>
