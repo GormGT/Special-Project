@@ -20,11 +20,13 @@
 
         <div class="audioSettingsPopup hidden">
             <button class="closeButton">X</button>
-            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="10" value="5">
             <label for="musicSlider">Music: <span class="musicSliderDisplayValue"></span></label><br>
+            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="200" value="100"><br>
             
-            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="10" value="5">
+            
             <label for="musicSlider">Weapons: <span class="weaponSliderDisplayValue"></span></label><br>
+            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="200" value="100">
+            
         </div>
 
         <div class="colorBlindSettingsPopup hidden"></div>
@@ -41,13 +43,7 @@
     <!-- AUDIO -->
     <li>
     <button class="audioToggleButton"><h2>Audio</h2></button>
-        <div class="audioSettingsPopup hidden">
-            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="10" value="5">
-            <label for="musicSlider">Music: <span class="musicSliderValue"></span></label><br>
-            
-            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="10" value="5">
-            <label for="musicSlider">Weapons: <span class="weaponSliderValue"></span></label><br>
-        </div>
+        
     </li>
     
     <!-- COLOR BLIND (BLACK AND WHITE) -->
