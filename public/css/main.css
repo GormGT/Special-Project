@@ -68,6 +68,14 @@ main#home{
     align-content: center;
 }
 
+#account{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+}
+
 body.testing {
     background: var(--background_color);
 }
