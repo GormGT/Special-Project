@@ -201,7 +201,7 @@ a.menuLink {
     border-radius: 20px;
     backdrop-filter: blur(3px);
     color:#E97912;
-    outline: 4px solid #E97912;
+    outline: 3px solid #E97912;
 }
 
 .closeButton{
