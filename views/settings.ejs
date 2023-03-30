@@ -24,13 +24,16 @@
 
             <label for="arcadeMode">Arcade mode:</label>
             <input class="videoCheckArcadeMode" type="checkbox" name="arcadeMode">
+
+            <label for="brightness">Brightness: <span class="brightnessSliderDisplayValue"></span>%</label>
+            <input class="videoSliderBrightness" type="range" name="brightness" min="0" max="100">
         </div>
 
         <div class="audioSettingsPopup hidden">
             <button class="closeButton" onclick="toggleAudioSettingsPopup(false);">X</button>
 
             <label for="musicSlider">Music: <span class="musicSliderDisplayValue"></span>%</label><br>
-            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="200" value="100"><br>
+            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="200"><br>
             
             
             <label for="weaponSlider">Weapons: <span class="weaponSliderDisplayValue"></span>%</label><br>
