@@ -179,13 +179,14 @@ a.menuLink {
     backdrop-filter: blur(3px);
     color:#E97912;
     outline: 3px solid #E97912;
+    width: 350px !important;
 }
 
 .closeButton{
     position: absolute;
     color: red;
     font-size: 1.5rem;
-    margin: -5px 0 0 -75px;
+    margin: -5px 0 0 -65px;
 }
 
 
