@@ -128,28 +128,6 @@ a.menuLink {
 }
 
 
-/*Image carousel styles*/
-
-/* #selectCarousel {
-    width: 50%;
-    position: relative;
-    margin: auto;
-}
-.carouselItem{
-    display: none;
-}
-.carouselItem img{
-    width: 100%;
-}
-.carouselItem ul li{
-    list-style-type: none;
-    text-align: center;
-}
-*/
-
-.hidden {
-    display: none !important;
-}
 
 /* SETTINGS */
 
@@ -198,4 +176,10 @@ a.menuLink {
 
 .bad_time:hover{
     opacity: 100;
+}
+
+/*-----------------MISC STYLES-------------------*/
+
+.hidden {
+    display: none !important;
 }
