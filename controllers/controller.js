@@ -5,7 +5,7 @@ const JWT = require("jsonwebtoken");
 // handle errors
 const handleErrors = (err) => {
     console.log(err.message, err.code);
-    let errors = { username : "", email : "", password : "" };
+    let errors = { email : "", password : "" };
 
     // incorrect email
     if (err.message === "incorrect email") {
@@ -59,15 +59,16 @@ module.exports.login_post = async (req, res) => {// login
         // makes user model
         const user = await User.login(username, email, password)
          .then((result) => console.log(result));
-        console.log("hola1");
+        console.log(user._id);
         // makes jwt token
+        console.log(user._id);
         const token = createToken(user._id);
         console.log(token);
         // saves token to cookies
         res.cookie("jwt", token, { httpOnly : true, maxAge : maxAge * 1000 });
         res.status(200).json({ user : user._id });
     } catch (err) {
-        console.log("ERROR ERROR!!!")
+        const error = handleErrors(err);
         res.status(400).json({ err });
     }
 
