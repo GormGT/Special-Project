@@ -1,54 +1,35 @@
-button {
-    padding: 4px;
-}
 .startButton{
     position: absolute;
     margin-top: -20px;
     left: 50%;
+    top: 50%;
+    transform: translate(-50%, -225%);
+    -ms-transform: translate(-50%, -225%);
+    /*FALLBACK: 
     top: 47%;
     transform: translate(-50%, -325%);
-    -ms-transform: translate(-50%, -325%);
+    */
+
+    background-color: rgba(0, 0, 0, 0.621);
+    padding: 10px 10px;
+    font-size: 25px;
+    color: #E97912;
+    outline: solid;
+    outline-color: #E97912;
+    border-radius: 10px;
+    transition-duration: 0.2s;
+    transform-origin: bottom;
 }
+.startButton:hover{
+    cursor: pointer;
 
-/* .carouselImageContain {
-    width: 100%;
-    height: 100%;
-    background-image:url("/img/GalleryConcept.png");
-    display: grid;
-    grid-template-columns: 0.7fr 1.6fr 0.7fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-auto-columns: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ". . ."
-      "prev startButton next"
-      ". . .";
-} */
-/*   
-  .startButton { grid-area: startButton; }
-  
-  .next { grid-area: next; }
-  
- .prev { grid-area: prev; } */
-  
-  
-
-/* .selectImageContain{
-    position: relative;
-    width: 100%;
-} */
-
-.carouselImage {
-    width: 50%;
+    border-radius: 1px;
+    background-color: rgba(0, 0, 0, 0.855);
+    transition-duration: 0.2s;
+    /*I want to have a transform: scale(1.1); here as well, it's just that... well, uncomment it and see for yourself*/
 }
 
 .carouselBtn {
-
-    padding: 20px;
-    width: 1ch;
-    border-radius: 4px;
-    cursor: pointer;
     border: 2px solid #E97912;
 
     transition-duration: 0.1s;
@@ -84,7 +65,6 @@ button {
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
     user-select: none;
     transition-duration: 0.1s;
     background-color: rgba(0, 0, 0, 0.501);
@@ -94,7 +74,6 @@ button {
     background-color: rgba(0, 0, 0, 0.925);
 }
 .carouselNext {
-    right: 0;
     border-radius: 3px 0 0 3px;
 } 
 

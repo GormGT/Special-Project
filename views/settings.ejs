@@ -16,43 +16,53 @@
 
     <!-- settings popups -->
     <div class="settingsPopups">
-        
-        <ul>
-    <!-- VIDEO -->
-    <li><button class="videoToggleButton"><h2>Video</h2></button>
-    <div class="videoSettingsPopup hidden"></div>
-    </li>
-    
-    <!-- AUDIO -->
-    <li>
-    <button class="audioToggleButton"><h2>Audio</h2></button>
-        <div class="audioSettingsPopup hidden">
-            <button class="closeButton">X</button>
-            <label for="musicSlider">Music: <span class="musicSliderDisplayValue"></span></label><br>
-            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="200" value="100"><br>
-            
-            
-            <label for="musicSlider">Weapons: <span class="weaponSliderDisplayValue"></span></label><br>
-            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="200" value="100">
-            
+        <div class="videoSettingsPopup hidden">
+            <button class="closeButton" onclick="toggleVideoSettingsPopup(false);">X</button>
+
+            <label for="colorblindMode">Color blind mode:</label>
+            <input class="videoCheckColorblindMode" type="checkbox" name="colorblindMode">
+
+            <label for="arcadeMode">Arcade mode:</label>
+            <input class="videoCheckArcadeMode" type="checkbox" name="arcadeMode">
+
+            <label for="brightness">Brightness: <span class="brightnessSliderDisplayValue"></span>%</label>
+            <input class="videoSliderBrightness" type="range" name="brightness" min="0" max="100">
         </div>
-    </li>
-    
-    <!-- COLOR BLIND (BLACK AND WHITE) -->
-    <li><button class="colorblindToggleButton"><h2>Color Blind Mode</h2></button>
-    <div class="colorBlindSettingsPopup hidden"></div>
-    </li>
-    
-    <!-- DEV MODE -->
-    <li><button class="devModeToggleButton"><h2>Dev Mode</h2></button>
-    <div class="devModeSettingsPopup hidden"></div>
-    </li>
-    
-    <!-- ARCADE MODE (PIXELATED) -->
-    <li><button class="arcadeModeToggleButton"><h2>Arcade Mode</h2></button>
-    <div class="arcadeModeSettingsPopup hidden"></div>
-    </li>
-    
+
+        <div class="audioSettingsPopup hidden">
+            <button class="closeButton" onclick="toggleAudioSettingsPopup(false);">X</button>
+
+            <label for="musicSlider">Music: <span class="musicSliderDisplayValue"></span>%</label><br>
+            <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="200"><br>
+            
+            
+            <label for="weaponSlider">Weapons: <span class="weaponSliderDisplayValue"></span>%</label><br>
+            <input class="audioSliderWeapon" type="range" name="weaponSlider" min="0" max="200"><br>
+
+            <label for="effectSlider">Sound Effects: <span class="effectSliderDisplayValue"></span>%</label><br>
+            <input class="audioSliderEffects" type="range" name="effectSlider" min="0" max="200">
+        </div>
+
+        <div class="devModeSettingsPopup hidden">
+            <button class="closeButton" onclick="toggleDeveloperModeSettingsPopup(false);">X</button>
+
+            <label for="showHitboxes">Show hitboxes:</label>
+            <input class="developerCheckHitboxes" type="checkbox" name="showHitboxes">
+
+            <label for="enableConsole">Enable console:</label>
+            <input class="developerCheckConsole" type="checkbox" name="enableConsole">
+        </div>
+    </div>
+
+    <ul class="openPopupButtons">
+        <!-- VIDEO -->
+        <li><button class="videoToggleButton" onclick="toggleVideoSettingsPopup(true);"><h2>Video</h2></button></li>
+        
+        <!-- AUDIO -->
+        <li><button class="audioToggleButton" onclick="toggleAudioSettingsPopup(true);"><h2>Audio</h2></button></li>
+        
+        <!-- DEV MODE -->
+        <li><button class="devModeToggleButton" onclick="toggleDeveloperModeSettingsPopup(true);"><h2>Dev Mode</h2></button></li>
     </ul>
     </div>
 
