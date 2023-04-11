@@ -26,6 +26,7 @@
     "flatted": "^3.2.7",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.0",
+    "nodemon": "^2.0.22",
     "validator": "^13.9.0"
   }
 }
