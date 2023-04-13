@@ -8,7 +8,7 @@ const videoSettingsClosePopupButton = videoSettingsPopup.querySelector('.closeBu
 const audioSettingsClosePopupButton = audioSettingsPopup.querySelector('.closeButton');
 const developerModeClosePopupButton = developerModeSettingsPopup.querySelector('.closeButton');
 
-// toggle buttons
+// toggle popup buttons
 const openPopupButtons = document.querySelector('.openPopupButtons');
 const videoSettingsButton = document.querySelector('.videoToggleButton');
 const audioSettingsButton = document.querySelector('.audioToggleButton');
@@ -19,6 +19,12 @@ const audioSliderMusic = audioSettingsPopup.querySelector('.audioSliderMusic');
 const audioSliderWeapon = audioSettingsPopup.querySelector('.audioSliderWeapon');
 const audioSliderEffects = audioSettingsPopup.querySelector('.audioSliderEffects');
 const videoSliderBrightness = videoSettingsPopup.querySelector('.videoSliderBrightness');
+
+// toggle settings buttons
+const videoCheckColorblindMode = videoSettingsPopup.querySelector('.videoCheckColorblindMode');
+const videoCheckArcadeMode = videoSettingsPopup.querySelector('.videoCheckArcadeMode');
+const developerCheckHitboxes = developerModeSettingsPopup.querySelector('.developerCheckHitboxes');
+const developerCheckConsole = developerModeSettingsPopup.querySelector('.developerCheckConsole');
 
 // display value elements (values are displayed here)
 const musicSliderDisplayValue = document.querySelector('.musicSliderDisplayValue');
@@ -82,7 +88,7 @@ const saveSettingsToLocalStorage = function(settingsType) {
             weapon: 100,
             soundEffects: 100
         },
-        developerMode: {
+        developerSettings: {
             showHitboxes: false,
             showConsoleLogs: false
         }
@@ -97,9 +103,16 @@ const saveSettingsToLocalStorage = function(settingsType) {
     // settings will be stored here, and be updated with the value that changed:
     let newSettings = oldSettings;
 
-    // main category check - audio, video, etc
+    // main category check - audio, video, developer settings
     if (mainCategory === 'video') {
         // subcategory check - brightness, colorblind, arcade mode
+        if (subcategory === 'brightness') {
+            newSettings.videoSettings.brightness = videoSliderBrightness.value;
+        } else if (subcategory === 'colorblind') {
+            newSettings.videoSettings.colorblindMode = videoCheckColorBlindMode.value;
+        } else if (subcategory === 'arcade') {
+            newSettings.videoSettings.arcadeMode = videoCheckArcadeMode.value;
+        };
     } else if (mainCategory === 'audio') {
         // subcategory check - audio weapon, audio music, audio effects
         if (subcategory === 'music') {
@@ -109,11 +122,19 @@ const saveSettingsToLocalStorage = function(settingsType) {
         } else if (subcategory === 'effects') {
             newSettings.audioSettings.soundEffects = audioSliderEffects.value;
         };
-    }
+    } else if (mainCategory === 'developer') {
+        // subcategory check - show hitboxes, show console logs
+        if (subcategory === 'hitboxes') {
+            newSettings.developerSettings.showHitboxes = developerCheckHitboxes.value;
+        } else if (subcategory === 'console') {
+            newSettings.developerSettings.showConsoleLogs = developerCheckConsole.value;
+        }
+    };
 
     localStorage.settings = JSON.stringify(newSettings);
 };
 
+// add event listener to slider settings
 const addSliderEventListener = function(sliderElement, displayValueElement, category) {
     sliderElement.addEventListener('input', () => {
         // update display value
@@ -122,15 +143,30 @@ const addSliderEventListener = function(sliderElement, displayValueElement, cate
         // save to localstorage
         saveSettingsToLocalStorage(category);
     });
-}
+};
 
-// video settings TODO: brightness slider
-// addSliderEventListener(videoSliderBrightness, brightnessSliderDisplayValue, 'video brightness');
+// add event listener to toggled settings
+const addToggleEventListener = function(toggleElement, category) {
+    // add event listener
+    toggleElement.addEventListener('input', () => {
+        // save to localstorage
+        saveSettingsToLocalStorage(category);
+    });
+};
+
+// input handlers - video settings
+addSliderEventListener(videoSliderBrightness, brightnessSliderDisplayValue, 'video brightness');
+addToggleEventListener(videoCheckArcadeMode, 'video arcade');
+addToggleEventListener(videoCheckColorblindMode, 'video colorblind');
 
 // input handlers - audio settings
 addSliderEventListener(audioSliderMusic, musicSliderDisplayValue, 'audio music');
 addSliderEventListener(audioSliderWeapon, weaponSliderDisplayValue, 'audio weapon');
 addSliderEventListener(audioSliderEffects, effectSliderDisplayValue, 'audio effects');
+
+// input handlers - developer settings
+addToggleEventListener(developerCheckConsole, 'developer console');
+addToggleEventListener(developerCheckHitboxes, 'developer hitboxes');
 
 // save & fetch local storage
 if (!localStorage.settings) {
@@ -146,18 +182,27 @@ if (!localStorage.settings) {
             weapon: 100,
             soundEffects: 100
         },
-        developerMode: {
+        developerSettings: {
             showHitboxes: false,
             showConsoleLogs: false
         }
     };
 
-    // set all slider values
+    // set all settings values
+    videoSliderBrightness.value = settings.videoSettings.brightness;
+    videoCheckArcadeMode.value = settings.videoSettings.arcadeMode;
+    videoCheckColorblindMode.value = settings.videoSettings.colorblindMode;
+
     audioSliderMusic.value = settings.audioSettings.music;
     audioSliderWeapon.value = settings.audioSettings.weapon;
     audioSliderEffects.value = settings.audioSettings.soundEffects;
 
+    developerCheckConsole.value = settings.developerSettings.showConsoleLogs;
+    developerCheckHitboxes.value = settings.developerSettings.showHitboxes;
+
     // set all display values
+    brightnessSliderDisplayValue.innerHTML = settings.videoSettings.brightness;
+
     musicSliderDisplayValue.innerHTML = settings.audioSettings.music;
     weaponSliderDisplayValue.innerHTML = settings.audioSettings.weapon;
     effectSliderDisplayValue.innerHTML = settings.audioSettings.soundEffects;
@@ -165,12 +210,21 @@ if (!localStorage.settings) {
     // if settings found, fetch & apply them
     const settings = JSON.parse(localStorage.settings);
 
-    // set all slider values
+    // set all settings values
+    videoSliderBrightness.value = settings.videoSettings.brightness;
+    videoCheckArcadeMode.value = settings.videoSettings.arcadeMode;
+    videoCheckColorblindMode.value = settings.videoSettings.colorblindMode;
+
     audioSliderMusic.value = settings.audioSettings.music;
     audioSliderWeapon.value = settings.audioSettings.weapon;
     audioSliderEffects.value = settings.audioSettings.soundEffects;
 
+    developerCheckConsole.value = settings.developerSettings.showConsoleLogs;
+    developerCheckHitboxes.value = settings.developerSettings.showHitboxes;
+
     // set all display values
+    brightnessSliderDisplayValue.innerHTML = settings.videoSettings.brightness;
+
     musicSliderDisplayValue.innerHTML = settings.audioSettings.music;
     weaponSliderDisplayValue.innerHTML = settings.audioSettings.weapon;
     effectSliderDisplayValue.innerHTML = settings.audioSettings.soundEffects;
