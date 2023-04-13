@@ -5,7 +5,7 @@ body.classTest {
 }
 
 body.main{
-    background-image: url("/img/placeholderback1.png");
+    background-image: url("/img/placeholderback1.png") !important;
 }
 
 body.shootingRange {
