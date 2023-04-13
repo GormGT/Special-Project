@@ -1,3 +1,5 @@
+const body = document.querySelector('body');
+
 const playAudio = async url => {
     const context = new AudioContext();
     const gainNode = context.createGain();
@@ -14,4 +16,4 @@ const playAudio = async url => {
     source.start();
 }
 
-addEventListener('click', () => playAudio('/audio/dsdshtgn.wav'));
+body.addEventListener('click', () => playAudio('/audio/dsdshtgn.wav'));
