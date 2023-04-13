@@ -111,6 +111,12 @@ module.exports.enemyClassTest_get = (req, res) => {
     res.render("enemyClassTest", { title: "enemyClassTest", bg: "classTest" });
 }
 
+// levels
+
+module.exports.shootingRange_get = (req, res) => {
+    res.render("shootingRange", { title: "The Shooting Range", bg: "shootingRange" });
+}
+
 
 // 404
 module.exports.error404 = (req, res) => {

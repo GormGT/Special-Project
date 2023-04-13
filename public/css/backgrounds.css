@@ -1,0 +1,15 @@
+body.classTest {
+    overflow: hidden;
+    background-image: url("/img/CastleCrashers-img/CastleBackground.png") !important;
+    background-size: 100%;
+}
+
+body.main{
+    background-image: url("/img/placeholderback1.png");
+}
+
+body.shootingRange {
+    overflow: hidden;
+    background-image: url("/img/GalleryConcept.png") !important;
+    background-size: 100%;
+}
