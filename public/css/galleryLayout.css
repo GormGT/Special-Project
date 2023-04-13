@@ -32,7 +32,7 @@ body.classTest {
 .enemyContainer {
     text-align: center;
     display: grid;
-    grid-template-columns: 9vw 20.2vw 20.4vw 20.4vw 20.2vw 9vw;
+    grid-template-columns: 19vw 15.5vw 15.4vw 15.4vw 15.5vw 19vw;
     grid-template-rows: 10.6vh 1.4fr 1.4fr 10.6vh;
     grid-auto-columns: 1fr;
     gap: 0px 0px;
