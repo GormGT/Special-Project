@@ -128,57 +128,6 @@ a.menuLink {
 }
 
 
-
-/* SETTINGS */
-
-#settings, header, h1{
-    font-size: 5rem;
-    text-align: center;
-    padding-top: 35px;
-}
-
-#settings, h2, a{
-    margin: 25px 0px;
-    font-size: 2rem;
-    text-decoration: none;
-}
-
-#setings, button{
-    background: transparent;
-    border: none !important;
-}
-
-.audioSettingsPopup{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgba(0, 0, 0, 0.35) !important;
-    border-radius: 20px;
-    backdrop-filter: blur(3px);
-    color:#E97912;
-    outline: 3px solid #E97912;
-    width: 350px !important;
-}
-
-.closeButton{
-    position: absolute;
-    color: red;
-    font-size: 1.5rem;
-    margin: -5px 0 0 -65px;
-}
-
-
-.bad_time{
-    position: absolute;
-    margin-left: -800px;
-    margin-top: -100px;
-    opacity: 0;
-}
-
-.bad_time:hover{
-    opacity: 100;
-}
-
 /*-----------------MISC STYLES-------------------*/
 
 .hidden {
