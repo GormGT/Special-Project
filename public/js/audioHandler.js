@@ -1,5 +1,14 @@
 const body = document.querySelector('body');
 
+// get users settings without updating display values, because that is only required in the settings page.
+const userSettings = getUserSettings(false);
+
+const audioSettings = {
+    music: userSettings.audioSettings.music / 100,
+    weapon: userSettings.audioSettings.weapon / 100,
+    effects: userSettings.audioSettings.soundEffects / 100
+};
+
 // add all audio files used in the gameAudioContext here
 const allAudioFilePaths = [
     '/audio/dsdshtgn.wav',
@@ -88,7 +97,7 @@ class AudioContextClass {
             .connect(this.gainNode)
             .connect(this.context.destination);
         
-        this.gainNode.gain.setValueAtTime(0.05, this.context.currentTime);
+        this.gainNode.gain.setValueAtTime(0.1 * audioSettings.weapon, this.context.currentTime);
         bufferSource.start();
     };
 };
