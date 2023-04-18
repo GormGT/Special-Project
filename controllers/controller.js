@@ -53,11 +53,11 @@ module.exports.login_get = (req, res) => {
 
 //login post request
 module.exports.login_post = async (req, res) => {// login
-    const { username, email, password } = req.body;
-    console.log(username, email, password);
+    const { email, password } = req.body;
+    console.log(email, password);
     try {
         // makes user model
-        const user = await User.login(username, email, password);
+        const user = await User.login(email, password);
         const token = createToken(user._id);
         console.log(token);
         // saves token to cookies
@@ -95,6 +95,23 @@ module.exports.signup_post = async (req, res) => {// signup
 module.exports.logout_get = (req, res) => {
     res.cookie("jwt", "", { maxAge: 1 });
     res.redirect("/");
+}
+
+module.exports.deleteacc_get = (req, res) => {
+    res.render("del-acc", { title: "Delete account", bg: "test" });
+}
+
+module.exports.deleteacc_post = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.login(email, password);
+        const deletedUser = await User.findByIdAndDelete(user._id);
+        console.log(deletedUser);
+        res.status(200).json(deletedUser.username);
+    } catch (err) {
+        res.status(400).json("Account does not exist");
+    }
+
 }
 
 // temp
