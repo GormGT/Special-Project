@@ -104,6 +104,7 @@ class Player {
             //     alert('you died, press ok to refresh!');
             //     window.location.reload();
             // }, 10);
+            console.log('you died');
         } else {
             playerHealthDisplay.innerText = this.health;
             return false;
@@ -178,7 +179,7 @@ class Enemy {
     // use an item on a target (the player)
     use(weapon) {
         player.calcDmg(weapon.damage);
-        playAudio('/audio/dsdshtgn.wav');
+        gameAudioContext.playAudio('/audio/dsdshtgn.wav');
     }
 }
 
