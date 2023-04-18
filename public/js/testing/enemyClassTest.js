@@ -152,7 +152,7 @@ class Enemy {
                     // enemy death animation
                     const delEnemySlot = document.querySelector(`div#slot${this.slot}`);
                     const htmlTemp = `
-                        <button class="enemy"><img src="/img/CastleCrashers-img/CastleThief-Dead.png" width="130px"></img></button>
+                        <button class="enemy"><img draggable="false" src="/img/CastleCrashers-img/CastleThief-Dead.png" width="130px"></img></button>
                     `;
 
                     delEnemySlot.innerHTML = htmlTemp;
@@ -205,7 +205,7 @@ function spawnEnemy() {
         const currEnemy = enemyList[enemyList.length - 1];
 
         const htmlTemp = `
-            <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})"><img src="/img/CastleCrashers-img/CastleThief.png" width="100px"></img></button>`;
+            <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})"><img draggable="false" src="/img/CastleCrashers-img/CastleThief.png" width="100px"></img></button>`;
 
         // put enemy into correct slot
         const enemySlot = document.querySelector(`div#slot${currEnemy.slot}`);
