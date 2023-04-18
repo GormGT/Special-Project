@@ -52,8 +52,11 @@ p, li, .menuLink, a, label{
 .accountName{
     float: right;
     position: absolute;
+    padding: 0 10px;
     top: 0;
     right: 0;
+    outline: 3px solid #E97912;
+    border-radius: 5px;
 }
 
 main#home{
