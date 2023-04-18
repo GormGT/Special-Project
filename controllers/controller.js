@@ -57,11 +57,7 @@ module.exports.login_post = async (req, res) => {// login
     console.log(username, email, password);
     try {
         // makes user model
-        const user = await User.login(username, email, password)
-         .then((result) => console.log(result));
-        console.log(user._id);
-        // makes jwt token
-        console.log(user._id);
+        const user = await User.login(username, email, password);
         const token = createToken(user._id);
         console.log(token);
         // saves token to cookies
@@ -88,9 +84,8 @@ module.exports.signup_post = async (req, res) => {// signup
         // creates logged in json web token
         const token = createToken(user._id);
         // saves token to browser
-        res.cookie("jwt", token, { httpOnly : true, maxAge : maxAge * 1000 })
+        res.cookie("jwt", token, { httpOnly : true, maxAge : maxAge * 1000 });
         res.status(201).json({ user : user._id });
-        console.log("success?");
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400);

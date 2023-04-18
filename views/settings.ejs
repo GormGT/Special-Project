@@ -18,20 +18,18 @@
     <!-- settings popups -->
     <div class="settingsPopups">
         <div class="videoSettingsPopup hidden">
-            <button class="closeButton" onclick="toggleVideoSettingsPopup(false);">X</button>
+            <button class="closeButton" onclick="toggleVideoSettingsPopup(false);">X</button><br>
 
-            <label for="colorblindMode">Color blind mode:</label>
-            <input class="videoCheckColorblindMode" type="checkbox" name="colorblindMode">
+            <button class="videoCheckColorblindMode" name="colorblindMode">Color blind mode: <span class="colorblindCheckDisplayValue"></span></button><br>
 
-            <label for="arcadeMode">Arcade mode:</label>
-            <input class="videoCheckArcadeMode" type="checkbox" name="arcadeMode">
+            <button class="videoCheckArcadeMode" name="arcadeMode">Arcade mode: <span class="arcadeCheckDisplayValue"></span></button><br>
 
             <label for="brightness">Brightness: <span class="brightnessSliderDisplayValue"></span>%</label>
             <input class="videoSliderBrightness" type="range" name="brightness" min="0" max="100">
         </div>
 
         <div class="audioSettingsPopup hidden">
-            <button class="closeButton" onclick="toggleAudioSettingsPopup(false);">X</button>
+            <button class="closeButton" onclick="toggleAudioSettingsPopup(false);">X</button><br>
 
             <label for="musicSlider">Music: <span class="musicSliderDisplayValue"></span>%</label><br>
             <input class="audioSliderMusic" type="range" name="musicSlider" min="0" max="200"><br>
@@ -45,13 +43,11 @@
         </div>
 
         <div class="devModeSettingsPopup hidden">
-            <button class="closeButton" onclick="toggleDeveloperModeSettingsPopup(false);">X</button>
+            <button class="closeButton" onclick="toggleDeveloperModeSettingsPopup(false);">X</button><br>
 
-            <label for="showHitboxes">Show hitboxes:</label>
-            <input class="developerCheckHitboxes" type="checkbox" name="showHitboxes">
+            <button class="developerCheckHitboxes">Show hitboxes: <span class="hitboxesCheckDisplayValue"></span></button>
 
-            <label for="enableConsole">Enable console:</label>
-            <input class="developerCheckConsole" type="checkbox" name="enableConsole">
+            <button class="developerCheckConsole">Enable console: <span class="consoleCheckDisplayValue"></span></button>
         </div>
     </div>
 
