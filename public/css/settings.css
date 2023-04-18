@@ -26,6 +26,7 @@ button {
 }
 
 .videoSettingsPopup{
+    padding: 50px 0 30px 0;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -38,6 +39,7 @@ button {
 }
 
 .audioSettingsPopup{
+    padding: 50px 0 30px 0;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -50,6 +52,7 @@ button {
 }
 
 .devModeSettingsPopup{
+    padding: 50px 0 30px 0;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -62,17 +65,16 @@ button {
 }
 
 .closeButton{
-    position: absolute;
+    position: absolute !important;
     color: red;
     font-size: 1.5rem;
-    margin: -5px 0 0 -65px;
+    margin: -25px 0 0 -20px;
 }
 
 
 .bad_time{
     position: absolute;
-    margin-left: -800px;
-    margin-top: -100px;
+    margin: -100px 0 0 -800px;
     opacity: 0;
 }
 
