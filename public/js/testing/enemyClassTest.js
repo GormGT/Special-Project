@@ -104,7 +104,7 @@ class Player {
             //     alert('you died, press ok to refresh!');
             //     window.location.reload();
             // }, 10);
-            console.log('you died');
+            // console.log('you died');
         } else {
             playerHealthDisplay.innerText = this.health;
             return false;
