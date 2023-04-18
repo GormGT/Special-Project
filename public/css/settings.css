@@ -1,3 +1,7 @@
+:root{
+    --primaryColor:#E97912
+}
+
 .audioSettingsPopup {
     width: 300px;
     background-color: var(--background_color);
@@ -20,62 +24,66 @@ button {
     text-decoration: none;
 }
 
-#setings, button{
+#settings, button{
     background: transparent;
     border: none !important;
 }
 
 .developerCheckHitboxes, .developerCheckConsole, .videoCheckColorblindMode, .videoCheckArcadeMode {
+    font-size: 1.5rem;
     color: white;
-    border: 2px solid #E97912 !important;
+    border: 2px solid var(--primaryColor) !important;
     padding: 10px;
     margin: 10px;
 }
 
 .videoSettingsPopup{
-    padding: 50px 0 30px 0;
+    padding:20px 0 30px 0;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(0, 0, 0, 0.35) !important;
     border-radius: 20px;
     backdrop-filter: blur(3px);
-    color:#E97912;
-    outline: 3px solid #E97912;
+    color:var(--primaryColor);
+    outline: 3px solid var(--primaryColor);
     width: 350px !important;
 }
 
 .audioSettingsPopup{
-    padding: 50px 0 30px 0;
+    padding: 20px 0 30px 0;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(0, 0, 0, 0.35) !important;
     border-radius: 20px;
     backdrop-filter: blur(3px);
-    color:#E97912;
-    outline: 3px solid #E97912;
+    color:var(--primaryColor);
+    outline: 3px solid var(--primaryColor);
     width: 350px !important;
 }
 
 .devModeSettingsPopup{
-    padding: 50px 0 30px 0;
+    padding: 20px 0 30px 0;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(0, 0, 0, 0.35) !important;
     border-radius: 20px;
     backdrop-filter: blur(3px);
-    color:#E97912;
-    outline: 3px solid #E97912;
+    color:var(--primaryColor);
+    outline: 3px solid var(--primaryColor);
     width: 350px !important;
 }
 
 .closeButton{
-    position: absolute !important;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    text-align: left !important;
     color: red;
     font-size: 1.5rem;
-    margin: -25px 0 0 -20px;
+    margin: 5px 0 10 30px !important;
 }
 
 
