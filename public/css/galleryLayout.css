@@ -1,5 +1,5 @@
 body.classTest {
-    overflow: hidden;
+    overflow: scroll !important;
     background-size: 100%;
 }
 
@@ -9,7 +9,7 @@ body.classTest {
     margin: 0;
 }
 
-.playerHealthDisplay {
+/* .playerHealthDisplay {
     display: none;
 
     padding: 10px;
@@ -27,9 +27,10 @@ body.classTest {
 
 .playerHealthDisplay span {
     color: red;
-}
+} */
 
 .enemyContainer {
+    z-index: 3;
     text-align: center;
     display: grid;
     width: 100%;
@@ -139,6 +140,7 @@ body.classTest {
     align-items: center;
 
     position: relative;
+    z-index: 2;
 }
 
 .enemy {
@@ -157,4 +159,21 @@ body.classTest {
     cursor: pointer;
 
     user-select: none;
+}
+
+.playerHealthVignette {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.playerHealthVignette img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.pointCounter, .exitButton {
+    z-index: 4;
 }

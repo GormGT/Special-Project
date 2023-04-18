@@ -1,6 +1,6 @@
 // dom
 const enemyContainer = document.querySelector('.enemyContainer');
-const playerHealthDisplay = document.querySelector('h2 span');
+const playerHealthVignette = document.querySelector('.playerHealthVignette');
 
 // global variables
 let enemyList = [];
@@ -89,6 +89,7 @@ class Player {
     constructor(name, health, weapon) {
         this.name = String(name);
         this.health = Number(health);
+        this.maxHealth = Number(health);
         this.weapon = Object(weapon);
     }
 
@@ -97,16 +98,21 @@ class Player {
         this.health -= dmg;
 
         if (this.health < 1) {
-            playerHealthDisplay.innerText = 'Dead :D';
+            // playerHealthDisplay.innerText = 'Dead :D';
 
             // Commented out for testing purposes
-            // setTimeout(() => { 
-            //     alert('you died, press ok to refresh!');
-            //     window.location.reload();
-            // }, 10);
-            // console.log('you died');
+            playerHealthVignette.classList.remove('hidden');
+            setTimeout(() => {
+                playerHealthVignette.classList.add('hidden');
+                alert('you died, press ok to refresh!');
+                window.location.reload();
+            }, 100);
         } else {
-            playerHealthDisplay.innerText = this.health;
+            console.log('damage');
+            playerHealthVignette.classList.remove('hidden');
+            setTimeout(() => {
+                playerHealthVignette.classList.add('hidden');
+            }, 100)
             return false;
         }
     }
@@ -191,8 +197,8 @@ weaponList.push(new Weapon('G-18', 5, 1, null, 200));
 weaponList.push(new Weapon('Burst Rifle', 1, 4, 125, 250));
 
 // create player instance & display health
-const player = new Player('Player', 25, weaponList[0]);
-playerHealthDisplay.innerText = player.health;
+const player = new Player('Player', 100, weaponList[0]);
+// playerHealthDisplay.innerText = player.health;
 
 // log enemies & player
 console.log(player);
