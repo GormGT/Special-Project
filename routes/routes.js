@@ -24,6 +24,12 @@ router.get("/signup", controller.signup_get);
 
 router.post("/signup", controller.signup_post);
 
+router.get("/logout", controller.logout_get);
+
+router.get("/del-acc", controller.deleteacc_get);
+
+router.post("/del-acc", controller.deleteacc_post);
+
 // temp routes
 router.get("/audiotest", controller.audiotest_get);
 
