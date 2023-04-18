@@ -1,3 +1,25 @@
+/* FONTS */
+@font-face {
+    font-family: "RhodiumRegular";
+    src: url("/fonts/RhodiumLibre-Regular.ttf");
+}
+@font-face {
+    font-family: "StardosBold";
+    src: url("/fonts/StardosStencil-Bold.ttf");
+}
+@font-face {
+    font-family: "StardosRegular";
+    src: url("/fonts/StardosStencil-Regular.ttf");
+}
+
+:root{
+    --primaryColor:#E97912
+}
+
+p, li, .menuLink, a, label{
+    font-family: "RhodiumRegular";
+}
+
 .audioSettingsPopup {
     width: 300px;
     background-color: var(--background_color);
@@ -15,71 +37,77 @@ button {
 }
 
 #settings, h2, a{
-    margin: 25px 0px;
+    margin: 15px 0px;
     font-size: 2rem;
     text-decoration: none;
 }
 
-#setings, button{
+#settings, button{
     background: transparent;
     border: none !important;
 }
 
 .developerCheckHitboxes, .developerCheckConsole, .videoCheckColorblindMode, .videoCheckArcadeMode {
+    font-size: 1.5rem;
     color: white;
-    border: 2px solid #E97912 !important;
+    border: 2px solid var(--primaryColor) !important;
     padding: 10px;
     margin: 10px;
 }
 
 .videoSettingsPopup{
+    padding:20px 0 30px 0;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(0, 0, 0, 0.35) !important;
     border-radius: 20px;
     backdrop-filter: blur(3px);
-    color:#E97912;
-    outline: 3px solid #E97912;
+    color:var(--primaryColor);
+    outline: 3px solid var(--primaryColor);
     width: 350px !important;
 }
 
 .audioSettingsPopup{
+    padding: 20px 0 30px 0;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(0, 0, 0, 0.35) !important;
     border-radius: 20px;
     backdrop-filter: blur(3px);
-    color:#E97912;
-    outline: 3px solid #E97912;
+    color:var(--primaryColor);
+    outline: 3px solid var(--primaryColor);
     width: 350px !important;
 }
 
 .devModeSettingsPopup{
+    padding: 20px 0 30px 0;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(0, 0, 0, 0.35) !important;
     border-radius: 20px;
     backdrop-filter: blur(3px);
-    color:#E97912;
-    outline: 3px solid #E97912;
+    color:var(--primaryColor);
+    outline: 3px solid var(--primaryColor);
     width: 350px !important;
 }
 
 .closeButton{
     position: absolute;
+    top: 15px;
+    left: 15px;
+    text-align: left !important;
     color: red;
     font-size: 1.5rem;
-    margin: -5px 0 0 -65px;
+    margin: 5px 0 10 30px !important;
 }
 
 
 .bad_time{
     position: absolute;
-    margin-left: -800px;
-    margin-top: -100px;
+    margin: -100px 0 0 -800px;
     opacity: 0;
 }
 
