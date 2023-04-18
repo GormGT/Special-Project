@@ -27,7 +27,7 @@
 h1, h2, h3, h4, h5, h6, p, li, .menuLink, a{
     color: #E97912;
 }
-p, li, .menuLink, a, label{
+p, li, .menuLink, a, label,h2{
     font-family: "RhodiumRegular";
 }
 
@@ -96,6 +96,7 @@ h1 span{
 }
 ul li{
     font-size: 30px;
+    margin: 15px 0;
 }
 
 a.menuLink {

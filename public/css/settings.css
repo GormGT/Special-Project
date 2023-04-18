@@ -1,5 +1,23 @@
+/* FONTS */
+@font-face {
+    font-family: "RhodiumRegular";
+    src: url("/fonts/RhodiumLibre-Regular.ttf");
+}
+@font-face {
+    font-family: "StardosBold";
+    src: url("/fonts/StardosStencil-Bold.ttf");
+}
+@font-face {
+    font-family: "StardosRegular";
+    src: url("/fonts/StardosStencil-Regular.ttf");
+}
+
 :root{
     --primaryColor:#E97912
+}
+
+p, li, .menuLink, a, label{
+    font-family: "RhodiumRegular";
 }
 
 .audioSettingsPopup {
@@ -19,7 +37,7 @@ button {
 }
 
 #settings, h2, a{
-    margin: 25px 0px;
+    margin: 15px 0px;
     font-size: 2rem;
     text-decoration: none;
 }
