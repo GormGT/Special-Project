@@ -4,12 +4,35 @@ body.classTest {
     background-size: 100%;
 }
 
+/* Main menu background */
 body.main{
     background-image: url("/img/placeholderback1.png") !important;
 }
 
-body.shootingRange {
+/* Main shooting range background and scaleability */
+body.shootingRange{
     overflow: hidden;
-    background-image: url("/img/GalleryConcept.png") !important;
-    background-size: 100%;
+}
+
+div.shootingRange {
+    background-image: url("/img/GalleryConcept.png");
+    background-position: center center;
+    transform-origin: center;
+    background-size:  cover;
+    /* min-width: 1300px;
+    background-repeat: no-repeat; */
+}
+
+@media screen and (max-width: 1250px) {
+    div.shootingRange {
+        background-size:  1500px;
+        min-width: 1050px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    div.shootingRange {
+        background-size:  1350px;
+        min-width: 850px;
+    }
 }

@@ -104,6 +104,7 @@ class Player {
             //     alert('you died, press ok to refresh!');
             //     window.location.reload();
             // }, 10);
+            // console.log('you died');
         } else {
             playerHealthDisplay.innerText = this.health;
             return false;
@@ -152,7 +153,7 @@ class Enemy {
                     // enemy death animation
                     const delEnemySlot = document.querySelector(`div#slot${this.slot}`);
                     const htmlTemp = `
-                        <button class="enemy"><img src="/img/CastleCrashers-img/CastleThief-Dead.png" width="130px"></img></button>
+                        <button class="enemy"><img draggable="false" src="/img/CastleCrashers-img/CastleThief-Dead.png" width="130px"></img></button>
                     `;
 
                     delEnemySlot.innerHTML = htmlTemp;
@@ -178,7 +179,7 @@ class Enemy {
     // use an item on a target (the player)
     use(weapon) {
         player.calcDmg(weapon.damage);
-        playAudio('/audio/dsdshtgn.wav');
+        gameAudioContext.playAudio('/audio/dsdshtgn.wav');
     }
 }
 
@@ -205,7 +206,7 @@ function spawnEnemy() {
         const currEnemy = enemyList[enemyList.length - 1];
 
         const htmlTemp = `
-            <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})"><img src="/img/CastleCrashers-img/CastleThief.png" width="100px"></img></button>`;
+            <button id="id${enemyId.id}" class="enemy" onclick="player.use(player.weapon, ${enemyId.id})"><img draggable="false" src="/img/CastleCrashers-img/CastleThief.png" width="100px"></img></button>`;
 
         // put enemy into correct slot
         const enemySlot = document.querySelector(`div#slot${currEnemy.slot}`);
